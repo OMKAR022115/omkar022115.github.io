@@ -1,6 +1,6 @@
 # Omkar Angadi - Electronics & Embedded Systems Portfolio
 
-Welcome to the official web portfolio source code for **Omkar Angadi**, Electronics & Communication Engineer specializing in Embedded Systems, FPGA/Verilog HDL, IoT, and Hardware Engineering.
+> Updated: August 2026 | Deployment Version 8.0
 
 ---
 
