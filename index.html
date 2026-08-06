@@ -4,51 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omkar Angadi | Electronics & Communication Engineer</title>
-    <meta name="description" content="Portfolio of Omkar Angadi - Electronics & Communication Engineer specializing in Embedded Systems, Verilog HDL, microcontrollers, and IoT solutions.">
-    <meta name="keywords" content="Omkar Angadi, Electronics Engineer, Embedded Systems, Verilog, IoT, C, Python, Dharwad">
+    <meta name="description" content="Minimalist Bento Portfolio of Omkar Angadi - Electronics & Communication Engineer specializing in Embedded Systems, Verilog HDL, and IoT.">
+    <meta name="keywords" content="Omkar Angadi, Electronics Engineer, Embedded Systems, Verilog, IoT, C, Python">
     <meta name="author" content="Omkar Angadi">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Omkar Angadi | Electronics & Communication Engineer">
-    <meta property="og:description" content="Explore projects and technical experience by Omkar Angadi.">
-    <meta property="og:type" content="website">
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS -->
+    <!-- Minimalist Bento CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Background Canvas for Subtle Grid / Circuit Effect -->
-    <canvas id="circuitCanvas"></canvas>
 
-    <!-- Navigation Header -->
+    <!-- Minimalist Sticky Navigation Header -->
     <header class="navbar-header" id="navbar">
         <div class="container nav-container">
             <a href="#hero" class="nav-logo">
-                <span class="logo-icon"><i class="fa-solid fa-microchip"></i></span>
-                <span class="logo-text">Omkar<span class="highlight">.Angadi</span></span>
+                <span class="logo-dot"></span> Omkar Angadi
             </a>
             
             <nav class="nav-menu" id="navMenu">
-                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a>
-                <a href="#skills" class="nav-link"><i class="fa-solid fa-layer-group"></i> Skills</a>
-                <a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
-                <a href="#projects" class="nav-link"><i class="fa-solid fa-diagram-project"></i> Projects</a>
-                <a href="#certifications" class="nav-link"><i class="fa-solid fa-certificate"></i> Certifications</a>
-                <a href="#education" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a>
-                <a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+                <a href="#hero" class="nav-link active">Overview</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
             <div class="nav-actions">
-                <a href="#contact" class="btn btn-primary btn-glow">Contact Me</a>
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -56,847 +46,411 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="container hero-container">
-                <div class="hero-content">
-                    <div class="badge-status">
-                        <span class="pulse-dot"></span> Electronics & Communication Engineer
-                    </div>
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="gradient-text">Omkar Angadi</span>
-                    </h1>
-                    <h2 class="hero-subtitle">
-                        <span class="typing-text" id="typingElement">Electronics & Communication Engineer</span>
-                    </h2>
-                    <p class="hero-description">
-                        Gained hands-on experience in embedded systems, IoT development, and C/Python programming through academic internships and practical projects. Skilled in microcontroller interfacing, PCB design, and technical documentation.
-                    </p>
-
-                    <!-- Contact Metadata Badges -->
-                    <div class="hero-badges">
-                        <div class="meta-badge"><i class="fa-solid fa-location-dot"></i> Dharwad, Karnataka, India</div>
-                        <div class="meta-badge"><i class="fa-solid fa-envelope"></i> omkarangadi0221@gmail.com</div>
-                        <div class="meta-badge"><i class="fa-solid fa-phone"></i> +91 6366078873</div>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="hero-cta">
-                        <a href="#projects" class="btn btn-primary btn-glow">
-                            <i class="fa-solid fa-code"></i> View Projects
-                        </a>
-                        <a href="#contact" class="btn btn-outline">
-                            <i class="fa-solid fa-paper-plane"></i> Contact Me
-                        </a>
-                        <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="btn btn-icon" title="LinkedIn Profile">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                    </div>
+    <!-- Main Bento Grid Wrapper -->
+    <main class="container main-bento-container" id="hero">
+        
+        <!-- ================= BENTO GRID HERO SECTION ================= -->
+        <div class="bento-grid bento-hero-grid">
+            
+            <!-- Bento Card 1: Main Intro (Spans 2 Columns) -->
+            <div class="bento-card bento-hero-main">
+                <div class="bento-badge">
+                    <span class="status-dot"></span> Electronics & Communication Engineer
                 </div>
+                <h1 class="hero-name">Omkar Angadi</h1>
+                <p class="hero-tagline">ECE Engineer | Embedded Systems & Verilog HDL</p>
+                <p class="hero-bio">
+                    Gained hands-on experience in embedded systems, IoT development, and C/Python programming through academic internships and personal engineering projects. Skilled in microcontroller interfacing, PCB design, and technical documentation.
+                </p>
+                <div class="hero-meta-row">
+                    <span><i class="fa-solid fa-location-dot"></i> Dharwad, Karnataka</span>
+                    <span><i class="fa-solid fa-envelope"></i> omkarangadi0221@gmail.com</span>
+                    <span><i class="fa-solid fa-phone"></i> +91 6366078873</span>
+                </div>
+                <div class="hero-cta-row">
+                    <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-arrow-down-long"></i> Explore Projects</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="btn btn-icon" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
 
-                <div class="hero-visual">
-                    <div class="profile-card-glass">
-                        <div class="profile-avatar-container">
-                            <div class="avatar-ring"></div>
-                            <div class="avatar-placeholder">
-                                <i class="fa-solid fa-user-gear avatar-icon"></i>
-                            </div>
+            <!-- Bento Card 2: Academic Metrics Card -->
+            <div class="bento-card bento-metrics-card">
+                <h3 class="bento-card-title"><i class="fa-solid fa-chart-line"></i> Academic Overview</h3>
+                <div class="metrics-bento-list">
+                    <div class="metric-row">
+                        <span class="metric-val">8.10</span>
+                        <div class="metric-meta">
+                            <strong>B.E. CGPA</strong>
+                            <small>S.D.M. College (Up to 6th Sem)</small>
                         </div>
-                        <div class="profile-info">
-                            <h3>Omkar I Angadi</h3>
-                            <p class="role-tag">ECE Engineer | Embedded Systems</p>
-                            <div class="chip-container">
-                                <span class="chip">C / Python</span>
-                                <span class="chip">Verilog HDL</span>
-                                <span class="chip">FPGA</span>
-                                <span class="chip">ESP32 / 8051</span>
-                                <span class="chip">PCB Layout</span>
-                            </div>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-val">8.94</span>
+                        <div class="metric-meta">
+                            <strong>Diploma CGPA</strong>
+                            <small>JSS K.H. Kabbur Institute</small>
                         </div>
-                        <div class="profile-footer-stats">
-                            <div class="stat-mini">
-                                <span class="stat-num">8.94</span>
-                                <span class="stat-lbl">Diploma CGPA</span>
-                            </div>
-                            <div class="stat-divider"></div>
-                            <div class="stat-mini">
-                                <span class="stat-num">8.10</span>
-                                <span class="stat-lbl">B.E. CGPA</span>
-                            </div>
-                            <div class="stat-divider"></div>
-                            <div class="stat-mini">
-                                <span class="stat-num">4+</span>
-                                <span class="stat-lbl">Internships</span>
-                            </div>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-val">4</span>
+                        <div class="metric-meta">
+                            <strong>Industry Internships</strong>
+                            <small>Crafting Tech, TATA Motors, Wisne, Amba</small>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- About Me Section -->
-        <section id="about" class="section-padding">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">BIOGRAPHY</span>
-                    <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-                    <div class="title-underline"></div>
+            <!-- Bento Card 3: Quick Focus Areas -->
+            <div class="bento-card bento-focus-card">
+                <h3 class="bento-card-title"><i class="fa-solid fa-microchip"></i> Core Focus</h3>
+                <div class="focus-tags">
+                    <span class="f-tag">Embedded Systems</span>
+                    <span class="f-tag">Verilog HDL</span>
+                    <span class="f-tag">FPGA & RISC-V</span>
+                    <span class="f-tag">Microcontrollers (8051/ESP32)</span>
+                    <span class="f-tag">C / Python</span>
+                    <span class="f-tag">Custom PCB Layout</span>
+                    <span class="f-tag">IoT Solutions</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= BENTO EXPERIENCE SECTION ================= -->
+        <section id="experience" class="bento-section">
+            <div class="section-title-wrap">
+                <span class="section-kicker">CAREER</span>
+                <h2>Work Experience & Internships</h2>
+            </div>
+
+            <div class="bento-grid bento-exp-grid">
+                
+                <!-- Experience Card 1: Crafting Technologies -->
+                <div class="bento-card bento-exp-card feature-exp">
+                    <div class="exp-header">
+                        <span class="exp-badge">Current Role</span>
+                        <span class="exp-date">June 2024 – Present</span>
+                    </div>
+                    <h3>Summer Engineering Intern</h3>
+                    <h4 class="company-text">Crafting Technologies</h4>
+                    <ul class="exp-list">
+                        <li>Built and validated a <strong>Verilog HDL-based RISC-V core</strong> with Ethernet integration on FPGA, covering RTL design, simulation, and debugging.</li>
+                        <li>Reached <strong>84% code coverage</strong> on Ethernet module using <strong>ModelSim / QuestaSim</strong>.</li>
+                        <li>Developing an <strong>FPGA object detection system</strong> using MATLAB/Simulink for algorithm validation and RTL optimization (achieving 93% detection accuracy and 78% precision).</li>
+                    </ul>
+                    <div class="card-tech-chips">
+                        <span>Verilog HDL</span> <span>FPGA</span> <span>RISC-V</span> <span>ModelSim</span> <span>MATLAB</span>
+                    </div>
                 </div>
 
-                <div class="about-grid">
-                    <div class="about-card-main glass-card">
-                        <div class="about-icon-header">
-                            <i class="fa-solid fa-microchip"></i>
-                            <h3>Engineering Background & Expertise</h3>
-                        </div>
-                        <p>
-                            I am an <strong>Electronics and Communication Engineering</strong> student with strong analytical and problem-solving skills. I have gained hands-on experience in <strong>embedded systems</strong>, <strong>IoT architecture</strong>, <strong>Verilog HDL RTL design</strong>, and <strong>Python & C programming</strong> through academic internships and personal engineering projects.
-                        </p>
-                        <p>
-                            Skilled in microcontroller interfacing, custom PCB design, hardware simulation tools, and technical documentation, with a keen interest in applying communication technologies to build innovative, real-world engineering solutions.
-                        </p>
-                        
-                        <div class="highlights-grid">
-                            <div class="highlight-item">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <div>
-                                    <h4>RTL Design & Simulation</h4>
-                                    <p>RISC-V Core & Ethernet Integration on FPGA (84% code coverage)</p>
-                                </div>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <div>
-                                    <h4>Algorithm & RTL Optimization</h4>
-                                    <p>FPGA Object Detection using MATLAB/Simulink (93% accuracy)</p>
-                                </div>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <div>
-                                    <h4>Embedded Hardware & PCB</h4>
-                                    <p>360° IR Radar, LM324, ESP32, 8051 Microcontrollers</p>
-                                </div>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <div>
-                                    <h4>IoT System Prototype</h4>
-                                    <p>Live Location Tracking Emergency Alert with Mobile & Web Portals</p>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Experience Card 2: TATA Motors -->
+                <div class="bento-card bento-exp-card">
+                    <div class="exp-header">
+                        <span class="exp-badge">Industry Experience</span>
+                        <span class="exp-date">10 Nov 2023 – 6 Mar 2024</span>
                     </div>
+                    <h3>Quality Inspector</h3>
+                    <h4 class="company-text">TATA Motors</h4>
+                    <ul class="exp-list">
+                        <li>Learned inspection procedures, quality control methods, and assembly line checks.</li>
+                        <li>Supported the quality department in maintaining inspection records and test reports.</li>
+                    </ul>
+                    <div class="card-tech-chips">
+                        <span>Quality Control</span> <span>Inspection Records</span> <span>Assembly Checks</span>
+                    </div>
+                </div>
 
-                    <!-- Metrics Grid -->
-                    <div class="stats-counter-grid">
-                        <div class="stat-card glass-card">
-                            <div class="stat-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                            <div class="stat-value" data-target="5">5+</div>
-                            <div class="stat-label">Core Projects</div>
-                        </div>
-                        <div class="stat-card glass-card">
-                            <div class="stat-icon"><i class="fa-solid fa-building-user"></i></div>
-                            <div class="stat-value" data-target="4">4</div>
-                            <div class="stat-label">Industry Internships</div>
-                        </div>
-                        <div class="stat-card glass-card">
-                            <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
-                            <div class="stat-value" data-target="5">5+</div>
-                            <div class="stat-label">Certifications</div>
-                        </div>
-                        <div class="stat-card glass-card">
-                            <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
-                            <div class="stat-value" data-target="400">400+</div>
-                            <div class="stat-label">Training Hours</div>
-                        </div>
+                <!-- Experience Card 3: Wisne -->
+                <div class="bento-card bento-exp-card">
+                    <div class="exp-header">
+                        <span class="exp-badge">Internship</span>
+                        <span class="exp-date">10 Feb 2023 – 25 Feb 2023</span>
                     </div>
+                    <h3>Networking Intern</h3>
+                    <h4 class="company-text">Wisne (Hubli)</h4>
+                    <p class="exp-desc">Hands-on internship on computer networking concepts, routing protocols, and hardware setup.</p>
+                    <div class="card-tech-chips">
+                        <span>Networking</span> <span>Protocols</span> <span>Routing</span>
+                    </div>
+                </div>
+
+                <!-- Experience Card 4: Amba Softwares Python -->
+                <div class="bento-card bento-exp-card">
+                    <div class="exp-header">
+                        <span class="exp-badge">Internship</span>
+                        <span class="exp-date">09 Sep 2022 – 25 Sep 2022</span>
+                    </div>
+                    <h3>Python Programming Intern</h3>
+                    <h4 class="company-text">Amba Softwares (Dharwad)</h4>
+                    <p class="exp-desc">Learned fundamentals of Python programming during the offline internship to strengthen programming logic.</p>
+                    <div class="card-tech-chips">
+                        <span>Python</span> <span>OOP</span> <span>Logic</span>
+                    </div>
+                </div>
+
+                <!-- Experience Card 5: Amba Softwares C -->
+                <div class="bento-card bento-exp-card">
+                    <div class="exp-header">
+                        <span class="exp-badge">Internship</span>
+                        <span class="exp-date">04 Apr 2022 – 19 Apr 2022</span>
+                    </div>
+                    <h3>C Programming Intern</h3>
+                    <h4 class="company-text">Amba Softwares (Dharwad)</h4>
+                    <p class="exp-desc">Learned and practiced C programming basics during the internship to build core algorithms.</p>
+                    <div class="card-tech-chips">
+                        <span>C Language</span> <span>Data Structures</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= BENTO PROJECTS SECTION ================= -->
+        <section id="projects" class="bento-section">
+            <div class="section-title-wrap">
+                <span class="section-kicker">PORTFOLIO</span>
+                <h2>Featured Projects</h2>
+            </div>
+
+            <div class="bento-grid bento-projects-grid">
+                
+                <!-- Project 1: RISC-V Core (Featured Wide) -->
+                <div class="bento-card bento-project-card project-wide">
+                    <div class="p-top">
+                        <span class="p-category">FPGA / RTL Design</span>
+                        <h3>Verilog RISC-V Core & Ethernet Integration</h3>
+                    </div>
+                    <p>Designed and verified a Verilog HDL-based RISC-V processor core integrated with an Ethernet module on FPGA hardware. Reached <strong>84% code coverage</strong> on ModelSim/QuestaSim.</p>
+                    <div class="p-metrics">
+                        <span><i class="fa-solid fa-check"></i> ModelSim & QuestaSim Validated</span>
+                        <span><i class="fa-solid fa-check"></i> FPGA Hardware Integrated</span>
+                    </div>
+                    <div class="card-tech-chips">
+                        <span>Verilog HDL</span> <span>FPGA</span> <span>RISC-V</span> <span>Ethernet</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: FPGA Object Detection -->
+                <div class="bento-card bento-project-card">
+                    <div class="p-top">
+                        <span class="p-category">MATLAB / RTL</span>
+                        <h3>FPGA Object Detection System</h3>
+                    </div>
+                    <p>Developing an FPGA object detection system using MATLAB/Simulink for algorithm validation and RTL optimization. Reaching <strong>93% accuracy</strong> and <strong>78% precision</strong>.</p>
+                    <div class="card-tech-chips">
+                        <span>MATLAB</span> <span>Simulink</span> <span>FPGA</span> <span>RTL</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Women's Safety System -->
+                <div class="bento-card bento-project-card">
+                    <div class="p-top">
+                        <span class="p-category">IoT / Mobile</span>
+                        <h3>Women's Safety Alert System</h3>
+                    </div>
+                    <p>Built an emergency alert system that shares the user's live location instantly. Tested across 20 locations and 30 accounts with reliable Android/Web sync.</p>
+                    <div class="card-tech-chips">
+                        <span>Android Studio</span> <span>HTML/CSS</span> <span>Node.js</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: IR Based Radar -->
+                <div class="bento-card bento-project-card">
+                    <div class="p-top">
+                        <span class="p-category">Hardware / Custom PCB</span>
+                        <h3>IR Based 360° Radar Prototype</h3>
+                    </div>
+                    <p>Built an IR-based radar prototype for real-time object detection and intrusion monitoring using 360-degree scanning on a custom-soldered PCB.</p>
+                    <div class="card-tech-chips">
+                        <span>IR Sensor</span> <span>Microcontroller</span> <span>LM324</span> <span>Custom PCB</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: Arduino Air Mouse -->
+                <div class="bento-card bento-project-card">
+                    <div class="p-top">
+                        <span class="p-category">ESP32 / Embedded</span>
+                        <h3>Arduino & ESP32 Air Mouse</h3>
+                    </div>
+                    <p>Real-time embedded application utilizing ESP32 microcontroller and sensor interfacing for wireless gesture cursor control.</p>
+                    <div class="card-tech-chips">
+                        <span>ESP32</span> <span>Arduino IDE</span> <span>Sensors</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= BENTO SKILLS & EDUCATION ================= -->
+        <div class="bento-grid bento-split-grid" id="skills">
+            
+            <!-- Bento Skills Block -->
+            <div class="bento-card bento-skills-block">
+                <h3 class="bento-card-title"><i class="fa-solid fa-layer-group"></i> Technical Skills</h3>
+                
+                <div class="skill-group">
+                    <h4>Languages</h4>
+                    <div class="skill-pills">
+                        <span>C Programming</span> <span>Python</span> <span>Verilog HDL</span> <span>HTML / CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Hardware & Microcontrollers</h4>
+                    <div class="skill-pills">
+                        <span>8051 Microcontroller</span> <span>Arduino</span> <span>ESP32</span> <span>FPGA Boards</span> <span>IR Sensors</span> <span>Custom PCB Layout</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>EDA Tools & Simulation</h4>
+                    <div class="skill-pills">
+                        <span>MATLAB</span> <span>Simulink</span> <span>ModelSim / QuestaSim</span> <span>Multisim</span> <span>Proteus</span> <span>DipTrace</span> <span>Arduino IDE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bento Education Block -->
+            <div class="bento-card bento-edu-block" id="education">
+                <h3 class="bento-card-title"><i class="fa-solid fa-graduation-cap"></i> Education & Credentials</h3>
+                
+                <div class="edu-item">
+                    <div class="edu-year">2027 Expected</div>
+                    <h4>B.E. in Electronics & Communication</h4>
+                    <p>S.D.M. College of Engineering and Technology, Dharwad</p>
+                    <span class="score-badge">CGPA: 8.10 (up to 6th Sem)</span>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-year">2024</div>
+                    <h4>Diploma in Electronics & Communication</h4>
+                    <p>JSS's K.H. Kabbur Institute of Engineering, Dharwad</p>
+                    <span class="score-badge">CGPA: 8.94</span>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-year">2021</div>
+                    <h4>SSLC</h4>
+                    <p>Basel Mission English Medium High School, Dharwad</p>
+                    <span class="score-badge">Percentage: 79.36%</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= BENTO CERTIFICATIONS SECTION ================= -->
+        <section class="bento-section" id="certifications">
+            <div class="section-title-wrap">
+                <span class="section-kicker">CREDENTIALS</span>
+                <h2>Certifications</h2>
+            </div>
+
+            <div class="bento-grid bento-cert-grid">
+                <div class="bento-card cert-bento">
+                    <div class="c-icon-wrap"><i class="fa-solid fa-shield-virus"></i></div>
+                    <h3>Fundamentals of IoT Security</h3>
+                    <p class="c-org">MindLuster | Cert No: 8498362673</p>
+                </div>
+                <div class="bento-card cert-bento">
+                    <div class="c-icon-wrap"><i class="fa-brands fa-python"></i></div>
+                    <h3>Python Programming Internship</h3>
+                    <p class="c-org">Amba Softwares (Offline)</p>
+                </div>
+                <div class="bento-card cert-bento">
+                    <div class="c-icon-wrap"><i class="fa-solid fa-code"></i></div>
+                    <h3>C-Programming Internship</h3>
+                    <p class="c-org">Amba Softwares</p>
+                </div>
+                <div class="bento-card cert-bento">
+                    <div class="c-icon-wrap"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>Networking Internship</h3>
+                    <p class="c-org">Wisne</p>
+                </div>
+                <div class="bento-card cert-bento">
+                    <div class="c-icon-wrap"><i class="fa-solid fa-chart-diagram"></i></div>
+                    <h3>IoT Edge Computing & Analytics</h3>
+                    <p class="c-org">Embedded Systems</p>
                 </div>
             </div>
         </section>
 
-        <!-- Technical Skills Section -->
-        <section id="skills" class="section-padding bg-alt">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">TECHNICAL EXPERTISE</span>
-                    <h2 class="section-title">Skills & <span class="gradient-text">Technologies</span></h2>
-                    <div class="title-underline"></div>
-                </div>
 
-                <div class="skills-grid">
-                    <!-- Languages -->
-                    <div class="skills-category glass-card">
-                        <div class="category-header">
-                            <div class="category-icon"><i class="fa-solid fa-code"></i></div>
-                            <h3>Programming Languages</h3>
-                        </div>
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>C Programming</span>
-                                    <span>Advanced</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>Python</span>
-                                    <span>Proficient</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>Verilog HDL</span>
-                                    <span>Specialized</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-fill" style="width: 88%;"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>HTML / CSS / JS</span>
-                                    <span>Intermediate</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-fill" style="width: 75%;"></div></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hardware & Microcontrollers -->
-                    <div class="skills-category glass-card">
-                        <div class="category-header">
-                            <div class="category-icon"><i class="fa-solid fa-microchip"></i></div>
-                            <h3>Hardware & Microcontrollers</h3>
-                        </div>
-                        <div class="skills-tags-wrapper">
-                            <div class="skill-tag-card"><i class="fa-solid fa-memory"></i> 8051 Microcontroller</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-microchip"></i> Arduino Uno / Nano</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-wifi"></i> ESP32 IoT Module</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-server"></i> FPGA Boards</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-wave-square"></i> IR Sensors & Radar</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-draw-polygon"></i> Custom PCB Fabrication</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-bolt"></i> LM324 & L293D Drivers</div>
-                        </div>
-                    </div>
-
-                    <!-- EDA & Tools -->
-                    <div class="skills-category glass-card">
-                        <div class="category-header">
-                            <div class="category-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                            <h3>EDA Tools & Simulation</h3>
-                        </div>
-                        <div class="skills-tags-wrapper">
-                            <div class="skill-tag-card"><i class="fa-solid fa-chart-line"></i> MATLAB</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-diagram-next"></i> Simulink</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-gears"></i> ModelSim / QuestaSim</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-bolt-lightning"></i> Multisim</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-network-wired"></i> Proteus Design Suite</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-compass-drafting"></i> DipTrace PCB</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-laptop"></i> Arduino IDE</div>
-                            <div class="skill-tag-card"><i class="fa-brands fa-android"></i> Android Studio</div>
-                        </div>
-                    </div>
-
-                    <!-- Soft Skills -->
-                    <div class="skills-category glass-card">
-                        <div class="category-header">
-                            <div class="category-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                            <h3>Soft Skills & Competencies</h3>
-                        </div>
-                        <div class="skills-tags-wrapper">
-                            <div class="skill-tag-card"><i class="fa-solid fa-brain"></i> Analytical Problem Solving</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-users"></i> Team Collaboration</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-comments"></i> Technical Communication</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-hourglass-half"></i> Time Management</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-user-ninja"></i> Leadership</div>
-                            <div class="skill-tag-card"><i class="fa-solid fa-vial-circle-check"></i> Quality Control & Inspection</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="section-padding">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">CAREER JOURNEY</span>
-                    <h2 class="section-title">Work Experience & <span class="gradient-text">Internships</span></h2>
-                    <div class="title-underline"></div>
-                </div>
-
-                <div class="timeline">
-                    <!-- Crafting Technologies -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class="fa-solid fa-microchip"></i></div>
-                        <div class="timeline-content glass-card">
-                            <div class="timeline-header">
-                                <span class="timeline-badge badge-current">Current Role</span>
-                                <span class="timeline-date"><i class="fa-regular fa-calendar"></i> June 2024 – Present</span>
-                            </div>
-                            <h3 class="role-title">Summer Engineering Intern</h3>
-                            <h4 class="company-name"><i class="fa-solid fa-building"></i> Crafting Technologies</h4>
-                            <ul class="timeline-bullets">
-                                <li>Built and validated a <strong>Verilog HDL-based RISC-V core</strong> with Ethernet integration on FPGA, covering RTL design, simulation, and debugging.</li>
-                                <li>Reached <strong>84% code coverage</strong> on the Ethernet module using <strong>ModelSim / QuestaSim</strong>.</li>
-                                <li>Currently developing an <strong>FPGA object detection system</strong> using MATLAB & Simulink for algorithm validation and RTL optimization.</li>
-                                <li>Achieving <strong>93% detection accuracy</strong> and <strong>78% precision</strong> so far.</li>
-                            </ul>
-                            <div class="timeline-tags">
-                                <span>Verilog HDL</span> <span>RISC-V</span> <span>FPGA</span> <span>ModelSim</span> <span>MATLAB</span> <span>Simulink</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TATA Motors -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class="fa-solid fa-car"></i></div>
-                        <div class="timeline-content glass-card">
-                            <div class="timeline-header">
-                                <span class="timeline-badge">Industry Experience</span>
-                                <span class="timeline-date"><i class="fa-regular fa-calendar"></i> 10 Nov 2023 – 6 Mar 2024</span>
-                            </div>
-                            <h3 class="role-title">Quality Inspector</h3>
-                            <h4 class="company-name"><i class="fa-solid fa-building"></i> TATA Motors</h4>
-                            <ul class="timeline-bullets">
-                                <li>Learned inspection procedures, quality control methods, and assembly line checks.</li>
-                                <li>Supported the quality department in maintaining inspection records and test reports.</li>
-                            </ul>
-                            <div class="timeline-tags">
-                                <span>Quality Control</span> <span>Inspection Records</span> <span>Assembly Line Checks</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Wisne Internship -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class="fa-solid fa-network-wired"></i></div>
-                        <div class="timeline-content glass-card">
-                            <div class="timeline-header">
-                                <span class="timeline-badge">120 Hours Internship</span>
-                                <span class="timeline-date"><i class="fa-regular fa-calendar"></i> 10 Feb 2023 – 25 Feb 2023</span>
-                            </div>
-                            <h3 class="role-title">Networking Engineering Intern</h3>
-                            <h4 class="company-name"><i class="fa-solid fa-building"></i> Wisne (Hubli)</h4>
-                            <ul class="timeline-bullets">
-                                <li>Completed 120 Hours of hands-on internship focused on computer networking concepts and hardware configuration.</li>
-                            </ul>
-                            <div class="timeline-tags">
-                                <span>Computer Networking</span> <span>Protocols</span> <span>Routing</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Amba Softwares - Python -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class="fa-brands fa-python"></i></div>
-                        <div class="timeline-content glass-card">
-                            <div class="timeline-header">
-                                <span class="timeline-badge">160 Hours Training</span>
-                                <span class="timeline-date"><i class="fa-regular fa-calendar"></i> 09 Sep 2022 – 25 Sep 2022</span>
-                            </div>
-                            <h3 class="role-title">Python Programming Intern</h3>
-                            <h4 class="company-name"><i class="fa-solid fa-building"></i> Amba Softwares (Dharwad)</h4>
-                            <ul class="timeline-bullets">
-                                <li>Learned fundamentals of Python programming during the offline internship and strengthened programming logic.</li>
-                            </ul>
-                            <div class="timeline-tags">
-                                <span>Python</span> <span>OOP</span> <span>Scripting</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Amba Softwares - C -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"><i class="fa-solid fa-code"></i></div>
-                        <div class="timeline-content glass-card">
-                            <div class="timeline-header">
-                                <span class="timeline-badge">120 Hours Training</span>
-                                <span class="timeline-date"><i class="fa-regular fa-calendar"></i> 04 Apr 2022 – 19 Apr 2022</span>
-                            </div>
-                            <h3 class="role-title">C Programming Intern</h3>
-                            <h4 class="company-name"><i class="fa-solid fa-building"></i> Amba Softwares (Dharwad)</h4>
-                            <ul class="timeline-bullets">
-                                <li>Learned and practiced C programming basics during the internship to strengthen programming logic.</li>
-                            </ul>
-                            <div class="timeline-tags">
-                                <span>C Language</span> <span>Data Structures</span> <span>Algorithms</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section-padding bg-alt">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">PORTFOLIO</span>
-                    <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-                    <div class="title-underline"></div>
-                </div>
-
-                <!-- Project Category Filters -->
-                <div class="project-filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="fpga">FPGA & Verilog</button>
-                    <button class="filter-btn" data-filter="embedded">IoT & Embedded Systems</button>
-                    <button class="filter-btn" data-filter="software">Software & Mobile</button>
-                </div>
-
-                <div class="projects-grid">
-                    <!-- Project 1: RISC-V Core -->
-                    <div class="project-card glass-card" data-category="fpga">
-                        <div class="project-banner">
-                            <div class="banner-icon"><i class="fa-solid fa-microchip"></i></div>
-                            <span class="project-chip">FPGA / RTL</span>
-                        </div>
-                        <div class="project-body">
-                            <h3>Verilog RISC-V Core & Ethernet Integration</h3>
-                            <p>Built and validated a Verilog HDL-based RISC-V core with Ethernet integration on FPGA, covering RTL design, simulation, and debugging.</p>
-                            <div class="project-metrics">
-                                <span class="metric-item"><i class="fa-solid fa-chart-pie"></i> 84% Code Coverage</span>
-                                <span class="metric-item"><i class="fa-solid fa-gears"></i> ModelSim / QuestaSim</span>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span>Verilog HDL</span> <span>FPGA</span> <span>RISC-V</span> <span>Ethernet</span>
-                            </div>
-                            <button class="btn btn-link open-modal" data-modal="modal-riscv">
-                                Read Project Details <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Project 2: FPGA Object Detection -->
-                    <div class="project-card glass-card" data-category="fpga">
-                        <div class="project-banner">
-                            <div class="banner-icon"><i class="fa-solid fa-eye"></i></div>
-                            <span class="project-chip">MATLAB / RTL</span>
-                        </div>
-                        <div class="project-body">
-                            <h3>FPGA Object Detection System</h3>
-                            <p>Developing an FPGA object detection system using MATLAB/Simulink for algorithm validation and RTL optimization.</p>
-                            <div class="project-metrics">
-                                <span class="metric-item"><i class="fa-solid fa-bullseye"></i> 93% Detection Accuracy</span>
-                                <span class="metric-item"><i class="fa-solid fa-sliders"></i> 78% Precision</span>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span>MATLAB</span> <span>Simulink</span> <span>FPGA</span> <span>RTL</span>
-                            </div>
-                            <button class="btn btn-link open-modal" data-modal="modal-fpga-obj">
-                                Read Project Details <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Project 3: Women's Safety System -->
-                    <div class="project-card glass-card" data-category="embedded software">
-                        <div class="project-banner">
-                            <div class="banner-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                            <span class="project-chip">IoT / Mobile</span>
-                        </div>
-                        <div class="project-body">
-                            <h3>Women's Safety System with Integrated Mobile App</h3>
-                            <p>Built an emergency alert system that shares the user's live location instantly. Tested across 20 locations and 30 accounts.</p>
-                            <div class="project-metrics">
-                                <span class="metric-item"><i class="fa-solid fa-location-crosshairs"></i> 20 Tested Locations</span>
-                                <span class="metric-item"><i class="fa-solid fa-users"></i> 30 User Accounts</span>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span>Android Studio</span> <span>HTML</span> <span>CSS</span> <span>Node.js</span>
-                            </div>
-                            <button class="btn btn-link open-modal" data-modal="modal-safety">
-                                Read Project Details <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Project 4: IR Based Radar -->
-                    <div class="project-card glass-card" data-category="embedded">
-                        <div class="project-banner">
-                            <div class="banner-icon"><i class="fa-solid fa-radar"></i></div>
-                            <span class="project-chip">Hardware & PCB</span>
-                        </div>
-                        <div class="project-body">
-                            <h3>IR Based Radar System</h3>
-                            <p>Built an IR-based radar prototype for real-time object detection and intrusion monitoring using 360-degree scanning on custom PCB.</p>
-                            <div class="project-metrics">
-                                <span class="metric-item"><i class="fa-solid fa-compass"></i> 360° Scanning</span>
-                                <span class="metric-item"><i class="fa-solid fa-circuit-board"></i> Custom PCB Soldering</span>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span>IR Sensor</span> <span>Microcontroller</span> <span>LM324</span> <span>L293D</span> <span>LCD</span>
-                            </div>
-                            <button class="btn btn-link open-modal" data-modal="modal-radar">
-                                Read Project Details <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Project 5: Arduino Airmouse -->
-                    <div class="project-card glass-card" data-category="embedded">
-                        <div class="project-banner">
-                            <div class="banner-icon"><i class="fa-solid fa-computer-mouse"></i></div>
-                            <span class="project-chip">ESP32 / Embedded</span>
-                        </div>
-                        <div class="project-body">
-                            <h3>Arduino Based Airmouse</h3>
-                            <p>Worked on real-time embedded applications using ESP32 and microcontrollers. Interfaced sensors and implemented mini IoT projects.</p>
-                            <div class="project-metrics">
-                                <span class="metric-item"><i class="fa-solid fa-wifi"></i> ESP32 Wireless</span>
-                                <span class="metric-item"><i class="fa-solid fa-microchip"></i> Sensor Interfacing</span>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span>ESP32</span> <span>Arduino IDE</span> <span>Microcontrollers</span>
-                            </div>
-                            <button class="btn btn-link open-modal" data-modal="modal-airmouse">
-                                Read Project Details <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="section-padding">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">ACHIEVEMENTS</span>
-                    <h2 class="section-title">Certifications & <span class="gradient-text">Training</span></h2>
-                    <div class="title-underline"></div>
-                </div>
-
-                <div class="certifications-grid">
-                    <!-- MindLuster IoT Security -->
-                    <div class="cert-card glass-card">
-                        <div class="cert-header">
-                            <div class="cert-badge-icon"><i class="fa-solid fa-shield-virus"></i></div>
-                            <span class="cert-date">Aug 2023</span>
-                        </div>
-                        <h3>Fundamentals of IoT Security</h3>
-                        <p class="cert-issuer"><strong>Issuer:</strong> MindLuster</p>
-                        <p class="cert-id"><strong>Cert No:</strong> 8498362673</p>
-                        <p class="cert-desc">Course covering IoT security fundamentals, hardware protection, and data privacy.</p>
-                        <button class="btn btn-outline btn-sm open-modal" data-modal="modal-cert-iot">
-                            <i class="fa-solid fa-eye"></i> View Certificate Info
-                        </button>
-                    </div>
-
-                    <!-- Python Amba Softwares -->
-                    <div class="cert-card glass-card">
-                        <div class="cert-header">
-                            <div class="cert-badge-icon"><i class="fa-brands fa-python"></i></div>
-                            <span class="cert-date">Sep 2022</span>
-                        </div>
-                        <h3>Python Programming Internship</h3>
-                        <p class="cert-issuer"><strong>Issuer:</strong> Amba Softwares (Offline)</p>
-                        <p class="cert-id"><strong>Reg No:</strong> 202EC21052</p>
-                        <p class="cert-desc">Offline training & internship certificate for completing Python programming coursework.</p>
-                        <button class="btn btn-outline btn-sm open-modal" data-modal="modal-cert-python">
-                            <i class="fa-solid fa-eye"></i> View Certificate Info
-                        </button>
-                    </div>
-
-                    <!-- C Programming Amba Softwares -->
-                    <div class="cert-card glass-card">
-                        <div class="cert-header">
-                            <div class="cert-badge-icon"><i class="fa-solid fa-c"></i></div>
-                            <span class="cert-date">Apr 2022</span>
-                        </div>
-                        <h3>C-Programming Internship</h3>
-                        <p class="cert-issuer"><strong>Issuer:</strong> Amba Softwares</p>
-                        <p class="cert-id"><strong>Reg No:</strong> 202EC21052</p>
-                        <p class="cert-desc">Completion certificate for 120-hour C-programming internship.</p>
-                        <button class="btn btn-outline btn-sm open-modal" data-modal="modal-cert-c">
-                            <i class="fa-solid fa-eye"></i> View Certificate Info
-                        </button>
-                    </div>
-
-                    <!-- Networking Wisne -->
-                    <div class="cert-card glass-card">
-                        <div class="cert-header">
-                            <div class="cert-badge-icon"><i class="fa-solid fa-network-wired"></i></div>
-                            <span class="cert-date">Feb 2023</span>
-                        </div>
-                        <h3>Networking Internship</h3>
-                        <p class="cert-issuer"><strong>Issuer:</strong> Wisne</p>
-                        <p class="cert-id"><strong>Reg No:</strong> 202EC21052</p>
-                        <p class="cert-desc">Certificate of completion for 120-hour Networking internship.</p>
-                        <button class="btn btn-outline btn-sm open-modal" data-modal="modal-cert-networking">
-                            <i class="fa-solid fa-eye"></i> View Certificate Info
-                        </button>
-                    </div>
-
-                    <!-- IoT Edge Computing -->
-                    <div class="cert-card glass-card">
-                        <div class="cert-header">
-                            <div class="cert-badge-icon"><i class="fa-solid fa-chart-diagram"></i></div>
-                            <span class="cert-date">2023</span>
-                        </div>
-                        <h3>IoT Edge Computing and IoT Analytics</h3>
-                        <p class="cert-issuer"><strong>Domain:</strong> Embedded Systems</p>
-                        <p class="cert-desc">Training covering edge computing fundamentals and IoT data analytics.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="section-padding bg-alt">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">ACADEMIC BACKGROUND</span>
-                    <h2 class="section-title">Education & <span class="gradient-text">Qualifications</span></h2>
-                    <div class="title-underline"></div>
-                </div>
-
-                <div class="education-grid">
-                    <!-- Bachelor of Engineering -->
-                    <div class="education-card glass-card">
-                        <div class="edu-year-badge">2027 (Expected)</div>
-                        <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <h3>B.E. in Electronics & Communication</h3>
-                        <h4 class="edu-college">S.D.M. College of Engineering and Technology, Dharwad</h4>
-                        <div class="edu-score">
-                            <span class="score-label">Cumulative GPA:</span>
-                            <span class="score-value highlight">8.10 CGPA</span> (Up to 6th Semester)
-                        </div>
-                    </div>
-
-                    <!-- Diploma in ECE -->
-                    <div class="education-card glass-card">
-                        <div class="edu-year-badge">2024</div>
-                        <div class="edu-icon"><i class="fa-solid fa-building-columns"></i></div>
-                        <h3>Diploma in Electronics & Communication</h3>
-                        <h4 class="edu-college">JSS's K.H. Kabbur Institute of Engineering College, Dharwad</h4>
-                        <div class="edu-score">
-                            <span class="score-label">Cumulative GPA:</span>
-                            <span class="score-value highlight">8.94 CGPA</span>
-                        </div>
-                    </div>
-
-                    <!-- Secondary School SSLC -->
-                    <div class="education-card glass-card">
-                        <div class="edu-year-badge">2021</div>
-                        <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
-                        <h3>SSLC</h3>
-                        <h4 class="edu-college">Basel Mission English Medium High School, Dharwad</h4>
-                        <div class="edu-score">
-                            <span class="score-label">Percentage:</span>
-                            <span class="score-value highlight">79.36%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section-padding">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">CONNECT WITH ME</span>
-                    <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-                    <div class="title-underline"></div>
-                </div>
-
-                <div class="contact-wrapper">
-                    <div class="contact-info-cards">
-                        <div class="contact-card glass-card">
-                            <div class="c-icon"><i class="fa-solid fa-envelope"></i></div>
+        <!-- ================= BENTO CONTACT SECTION ================= -->
+        <section class="bento-section" id="contact">
+            <div class="bento-grid bento-contact-grid">
+                
+                <div class="bento-card contact-info-bento">
+                    <h2>Get In Touch</h2>
+                    <p>Interested in collaborating or discussing engineering opportunities? Feel free to reach out!</p>
+                    
+                    <div class="c-details-list">
+                        <div class="c-detail-item">
+                            <i class="fa-solid fa-envelope"></i>
                             <div>
-                                <h4>Email</h4>
+                                <strong>Email</strong>
                                 <a href="mailto:omkarangadi0221@gmail.com">omkarangadi0221@gmail.com</a>
                             </div>
                         </div>
-
-                        <div class="contact-card glass-card">
-                            <div class="c-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="c-detail-item">
+                            <i class="fa-solid fa-phone"></i>
                             <div>
-                                <h4>Phone</h4>
+                                <strong>Phone</strong>
                                 <a href="tel:+916366078873">+91 6366078873</a>
                             </div>
                         </div>
-
-                        <div class="contact-card glass-card">
-                            <div class="c-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="c-detail-item">
+                            <i class="fa-solid fa-location-dot"></i>
                             <div>
-                                <h4>Location</h4>
-                                <p>M J Nagar, Dharwad, Karnataka</p>
+                                <strong>Location</strong>
+                                <span>M J Nagar, Dharwad, Karnataka</span>
                             </div>
                         </div>
-
-                        <div class="contact-card glass-card">
-                            <div class="c-icon"><i class="fa-brands fa-linkedin"></i></div>
-                            <div>
-                                <h4>LinkedIn</h4>
-                                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener">linkedin.com/in/omkarangadi</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Contact Form -->
-                    <div class="contact-form-container glass-card">
-                        <h3>Send a Message</h3>
-                        <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" required placeholder="Name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Your Email</label>
-                                <input type="email" id="email" required placeholder="email@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" required placeholder="Subject">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" rows="4" required placeholder="Your message..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-glow w-100">
-                                <i class="fa-solid fa-paper-plane"></i> Send Message
-                            </button>
-                            <div id="formSuccess" class="form-status-msg success" style="display: none;">
-                                <i class="fa-solid fa-circle-check"></i> Thank you! Your message has been sent successfully.
-                            </div>
-                        </form>
                     </div>
                 </div>
+
+                <div class="bento-card contact-form-bento">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="3" required placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        <div id="formSuccess" class="form-status-msg" style="display: none;">
+                            <i class="fa-solid fa-circle-check"></i> Thank you! Message sent successfully.
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
+    <footer class="minimal-footer">
+        <div class="container footer-content">
             <p>&copy; 2026 Omkar Angadi. All rights reserved.</p>
-            <div class="footer-socials">
-                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="mailto:omkarangadi0221@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:omkarangadi0221@gmail.com">Email</a>
             </div>
         </div>
     </footer>
 
-    <!-- Modals Container -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content glass-card">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <div class="modal-body" id="modalBody">
-                <!-- Dynamic Content Injected via JS -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Hidden Template Content for Modals -->
-    <template id="modal-riscv">
-        <h2>Verilog RISC-V Core & Ethernet Integration</h2>
-        <span class="badge-tag">FPGA & RTL Design</span>
-        <hr class="modal-divider">
-        <p><strong>Setting:</strong> Crafting Technologies (Summer Internship)</p>
-        <h4>Key Technical Highlights:</h4>
-        <ul>
-            <li>Built and validated a Verilog HDL-based RISC-V core with Ethernet integration on FPGA.</li>
-            <li>Covered RTL design, simulation, and debugging.</li>
-            <li>Reached 84% code coverage on the Ethernet module using ModelSim/QuestaSim.</li>
-        </ul>
-    </template>
-
-    <template id="modal-fpga-obj">
-        <h2>FPGA Object Detection System</h2>
-        <span class="badge-tag">MATLAB & RTL</span>
-        <hr class="modal-divider">
-        <p><strong>Setting:</strong> Crafting Technologies</p>
-        <h4>Key Technical Highlights:</h4>
-        <ul>
-            <li>Developing an FPGA object detection system using MATLAB/Simulink for algorithm validation and RTL optimization.</li>
-            <li>Achieving 93% detection accuracy and 78% precision so far.</li>
-        </ul>
-    </template>
-
-    <template id="modal-safety">
-        <h2>Women's Safety System with Integrated Mobile App</h2>
-        <span class="badge-tag">Android & Web</span>
-        <hr class="modal-divider">
-        <p><strong>Technologies:</strong> Android Studio, HTML, CSS, Node.js</p>
-        <h4>Key Technical Highlights:</h4>
-        <ul>
-            <li>Built an emergency alert system that shares the user's live location instantly.</li>
-            <li>Tested across 20 locations and 30 accounts, confirming reliable sync between Android app and web portal.</li>
-        </ul>
-    </template>
-
-    <template id="modal-radar">
-        <h2>IR Based Radar System</h2>
-        <span class="badge-tag">Hardware & Custom PCB</span>
-        <hr class="modal-divider">
-        <p><strong>Hardware Used:</strong> IR Sensor, Microcontroller, LM324 Comparator, L293D Motor Driver, Stepper Motor, LCD, Buzzer</p>
-        <h4>Key Technical Highlights:</h4>
-        <ul>
-            <li>Built an IR-based radar prototype for real-time object detection and intrusion monitoring.</li>
-            <li>Uses 360-degree scanning to detect obstacles and display detection angle on an LCD, with an alarm triggered on intrusion.</li>
-            <li>Custom PCB fabrication (component-level assembly and soldering).</li>
-        </ul>
-    </template>
-
-    <template id="modal-airmouse">
-        <h2>Arduino Based Airmouse</h2>
-        <span class="badge-tag">ESP32 & Sensors</span>
-        <hr class="modal-divider">
-        <p><strong>Technologies:</strong> ESP32, Arduino IDE, Microcontrollers</p>
-        <h4>Key Technical Highlights:</h4>
-        <ul>
-            <li>Worked on real-time embedded applications using ESP32 and microcontrollers.</li>
-            <li>Learned interfacing of sensors and implemented mini IoT projects.</li>
-        </ul>
-    </template>
-
-    <template id="modal-cert-iot">
-        <h2>Fundamentals of IoT Security</h2>
-        <span class="badge-tag">MindLuster Certificate</span>
-        <hr class="modal-divider">
-        <p><strong>Student Name:</strong> Omkar Angadi</p>
-        <p><strong>Date:</strong> 2023-08-21</p>
-        <p><strong>Certified No:</strong> 8498362673</p>
-        <p>Course about Fundamentals of IoT Security.</p>
-    </template>
-
-    <template id="modal-cert-python">
-        <h2>Python Programming Internship Certificate</h2>
-        <span class="badge-tag">Amba Softwares Certificate</span>
-        <hr class="modal-divider">
-        <p><strong>Name:</strong> Mr. Omkar I Angadi (Reg No: 202EC21052)</p>
-        <p><strong>Institution:</strong> K.H. Kabbur Institute of Engineering Dharwad</p>
-        <p><strong>Duration:</strong> 09/09/2022 to 25/09/2022 (160 Hours)</p>
-        <p>Offline internship in Python Programming.</p>
-    </template>
-
-    <template id="modal-cert-c">
-        <h2>C-Programming Internship Certificate</h2>
-        <span class="badge-tag">Amba Softwares Certificate</span>
-        <hr class="modal-divider">
-        <p><strong>Name:</strong> Mr. Omkar I Angadi (Reg No: 202EC21052)</p>
-        <p><strong>Institution:</strong> K.H. Kabbur Institute of Engineering Dharwad</p>
-        <p><strong>Duration:</strong> 04/04/2022 to 19/04/2022 (120 Hours)</p>
-        <p>Internship in C-Programming.</p>
-    </template>
-
-    <template id="modal-cert-networking">
-        <h2>Networking Internship Certificate</h2>
-        <span class="badge-tag">Wisne Certificate</span>
-        <hr class="modal-divider">
-        <p><strong>Name:</strong> Mr. Omkar I Angadi (Reg No: 202EC21052)</p>
-        <p><strong>Institution:</strong> K.H. Kabbur Institute of Engineering Dharwad</p>
-        <p><strong>Duration:</strong> 10th Feb 2023 to 25th Feb 2023 (120 Hours)</p>
-        <p>Internship on Networking.</p>
-    </template>
-
-    <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
 </html>
