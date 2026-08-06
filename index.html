@@ -16,10 +16,13 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS with Cache Buster v3.0 -->
-    <link rel="stylesheet" href="styles.css?v=3.0">
+    <!-- Custom CSS with Cache Buster v4.0 -->
+    <link rel="stylesheet" href="styles.css?v=4.0">
 </head>
 <body>
+
+    <!-- Background Canvas for Circuit Node Effect -->
+    <canvas id="circuitCanvas"></canvas>
 
     <!-- Minimalist Sticky Navigation Header -->
     <header class="navbar-header" id="navbar">
@@ -74,7 +77,20 @@
                 </div>
             </div>
 
-            <!-- Bento Card 2: Academic Metrics Card -->
+            <!-- Bento Card 2: Profile Photo Visual Showcase Card -->
+            <div class="bento-card bento-profile-visual-card">
+                <div class="profile-avatar-wrapper">
+                    <div class="avatar-ring-glow"></div>
+                    <img src="omkar_profile_avatar.png" alt="Omkar Angadi Profile Visual" class="avatar-img">
+                </div>
+                <div class="profile-meta-text text-center">
+                    <h4>Omkar I Angadi</h4>
+                    <p>Embedded & FPGA Engineer</p>
+                    <span class="verified-chip"><i class="fa-solid fa-circle-check"></i> Verified Portfolio</span>
+                </div>
+            </div>
+
+            <!-- Bento Card 3: Academic Metrics Card -->
             <div class="bento-card bento-metrics-card">
                 <h3 class="bento-card-title"><i class="fa-solid fa-chart-line"></i> Academic Overview</h3>
                 <div class="metrics-bento-list">
@@ -96,13 +112,13 @@
                         <span class="metric-val">4</span>
                         <div class="metric-meta">
                             <strong>Industry Internships</strong>
-                            <small>Crafting Tech, TATA Motors, Wisne, Amba</small>
+                            <small>Crofting Tech, TATA Motors, Wisne, Amba</small>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bento Card 3: Quick Focus Areas -->
+            <!-- Bento Card 4: Quick Focus Areas -->
             <div class="bento-card bento-focus-card">
                 <h3 class="bento-card-title"><i class="fa-solid fa-microchip"></i> Core Focus</h3>
                 <div class="focus-tags">
@@ -128,14 +144,14 @@
 
             <div class="bento-grid bento-exp-grid">
                 
-                <!-- Experience Card 1: Crafting Technologies -->
+                <!-- Experience Card 1: Crofting Technologies -->
                 <div class="bento-card bento-exp-card feature-exp">
                     <div class="exp-header">
                         <span class="exp-badge">Current Role</span>
                         <span class="exp-date">June 2024 – Present</span>
                     </div>
                     <h3>Summer Engineering Intern</h3>
-                    <h4 class="company-text">Crafting Technologies</h4>
+                    <h4 class="company-text">Crofting Technologies</h4>
                     <ul class="exp-list">
                         <li>Built and validated a <strong>Verilog HDL-based RISC-V core</strong> with Ethernet integration on FPGA, covering RTL design, simulation, and debugging.</li>
                         <li>Reached <strong>84% code coverage</strong> on Ethernet module using <strong>ModelSim / QuestaSim</strong>.</li>
@@ -270,11 +286,11 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Arduino Air Mouse -->
+                <!-- Project 5: Arduino Based Air Mouse -->
                 <div class="bento-card bento-project-card">
                     <div class="p-top">
                         <span class="p-category">ESP32 / Embedded</span>
-                        <h3>Arduino & ESP32 Air Mouse</h3>
+                        <h3>Arduino Based Air Mouse</h3>
                     </div>
                     <p>Real-time embedded application utilizing ESP32 microcontroller and sensor interfacing for wireless gesture cursor control.</p>
                     <div class="card-tech-chips">
@@ -451,6 +467,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=2.0"></script>
+    <script src="script.js?v=4.0"></script>
 </body>
 </html>
