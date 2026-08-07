@@ -1,776 +1,761 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omkar Angadi | Electronics & Communication Engineer</title>
-    <meta name="description" content="Portfolio of Omkar Angadi - Electronics & Communication Engineer specializing in Embedded Systems, Verilog HDL, RISC-V, FPGA Design, and IoT.">
-    <meta name="keywords" content="Omkar Angadi, Electronics Engineer, Embedded Systems, Verilog HDL, RISC-V, FPGA, IoT, C, Python, PCB Layout">
+    <title>Omkar Angadi — Electronics & Communication Engineer</title>
+    <meta name="description" content="Apple/Linear-inspired dark engineering portfolio of Omkar Angadi — ECE Engineer specializing in Embedded Systems, Verilog HDL, RISC-V, FPGA Design, and Custom PCB Prototyping.">
+    <meta name="keywords" content="Omkar Angadi, Electronics Engineer, Verilog HDL, RISC-V, FPGA, Embedded Systems, C, Python, PCB Layout">
     <meta name="author" content="Omkar Angadi">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#030712',
+                            900: '#080d1a',
+                            800: '#0f172a',
+                            700: '#1e293b'
+                        },
+                        accent: {
+                            cyan: '#06b6d4',
+                            blue: '#3b82f6',
+                            glow: '#00f2fe'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=8.0">
+
+    <!-- Linear Background & Glow Custom Utilities -->
+    <style>
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Subtle linear grid pattern */
+        .bg-linear-grid {
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12) 0%, transparent 60%),
+                linear-gradient(rgba(31, 41, 55, 0.25) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(31, 41, 55, 0.25) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        /* Glassmorphism Hairline Card */
+        .linear-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(31, 41, 55, 0.8);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .linear-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Terminal Cursor Blink */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+    </style>
 </head>
-<body>
+<body class="bg-dark-950 text-gray-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
 
-    <!-- Circuit Canvas Animated Background -->
-    <canvas id="circuitCanvas"></canvas>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-10 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-gray-900 border border-cyan-500/40 text-cyan-400 px-4 py-3 rounded-lg shadow-2xl backdrop-blur-xl text-sm font-medium">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMsg">Email copied to clipboard!</span>
+    </div>
 
-    <!-- PCB Grid Overlay -->
-    <div class="pcb-grid-overlay"></div>
-
-    <!-- Toast Notification Container -->
-    <div id="toast" class="toast-notification"><i class="fa-solid fa-circle-check"></i> <span id="toastMsg">Copied to clipboard!</span></div>
-
-    <!-- Sticky Frosted Glass Navigation Header -->
-    <header class="navbar-header" id="navbar">
-        <div class="container nav-container">
-            <a href="#hero" class="nav-logo">
-                <span class="logo-pulse"></span> Omkar<span class="text-accent">.Angadi</span>
+    <!-- Minimalist Blur Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-dark-950/70 backdrop-blur-md border-b border-gray-800/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-2 text-sm font-semibold tracking-wide text-white hover:opacity-80 transition-opacity">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#06b6d4]"></span>
+                <span>Omkar<span class="text-cyan-400">.Angadi</span></span>
             </a>
-            
-            <nav class="nav-menu" id="navMenu">
-                <a href="#hero" class="nav-link active">Overview</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#contact" class="nav-link">Contact</a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-gray-400">
+                <a href="#hero" class="hover:text-cyan-400 transition-colors">Overview</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#experience-skills" class="hover:text-cyan-400 transition-colors">Experience & Skills</a>
+                <a href="#education" class="hover:text-cyan-400 transition-colors">Education</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
             </nav>
 
-            <div class="nav-actions">
-                <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="nav-icon-btn" title="GitHub Profile" aria-label="GitHub Profile">
-                    <i class="fa-brands fa-github"></i>
+            <!-- Social Icon Badges & Action -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all" title="GitHub Profile">
+                    <i class="fa-brands fa-github text-sm"></i>
                 </a>
-                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="nav-icon-btn" title="LinkedIn Profile" aria-label="LinkedIn Profile">
-                    <i class="fa-brands fa-linkedin-in"></i>
+                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all" title="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in text-sm"></i>
                 </a>
-                <a href="#contact" class="btn btn-primary btn-sm">Contact Me</a>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
-                    <i class="fa-solid fa-bars"></i>
+                <button onclick="copyToClipboard('omkarangadi0221@gmail.com', 'Email address copied!')" class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all" title="Copy Email">
+                    <i class="fa-solid fa-envelope text-sm"></i>
                 </button>
+                <a href="#contact" class="hidden sm:inline-flex text-xs font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all">
+                    Get In Touch
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="container main-content" id="hero">
+    <!-- Main Container -->
+    <main class="pt-24 pb-16 bg-linear-grid min-h-screen">
         
         <!-- ================= HERO SECTION ================= -->
-        <section class="hero-section">
-            <div class="hero-grid">
+        <section id="hero" class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                <!-- Hero Left: Main Bio Card -->
-                <div class="glass-card hero-bio-card">
-                    <div class="status-badge">
-                        <span class="status-dot"></span> Electronics & Communication Engineer
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold tracking-wide">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                        Electronics & Communication Engineer
                     </div>
-                    
-                    <h1 class="hero-title">Omkar Angadi</h1>
-                    <h2 class="hero-subtitle">
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Omkar Angadi
+                    </h1>
+
+                    <div class="text-lg sm:text-xl font-medium text-cyan-400 font-mono">
                         <span id="typingElement"></span><span class="cursor-blink">|</span>
-                    </h2>
-                    
-                    <p class="hero-description">
-                        ECE Engineer specializing in <strong>Embedded Systems</strong>, <strong>Verilog HDL</strong>, <strong>RISC-V</strong>, and <strong>FPGA Design</strong>. Experienced in digital hardware verification (84% Ethernet coverage), MATLAB simulation (93% object detection accuracy), and custom PCB prototyping.
+                    </div>
+
+                    <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                        Specializing in <strong>Embedded Systems</strong>, <strong>Verilog HDL</strong>, <strong>RISC-V architecture</strong>, and <strong>FPGA Design</strong>. Proven expertise in digital verification (<span class="font-mono text-cyan-300">84% RTL coverage</span>), MATLAB hardware simulation (<span class="font-mono text-cyan-300">93% object accuracy</span>), and custom PCB layout.
                     </p>
 
-                    <!-- Academic Metrics Pills -->
-                    <div class="hero-metrics-row">
-                        <div class="metric-pill">
-                            <span class="metric-num">8.10</span>
-                            <span class="metric-label">B.E. CGPA</span>
+                    <!-- CGPA & Stats Grid -->
+                    <div class="grid grid-cols-3 gap-4 pt-2 max-w-lg">
+                        <div class="linear-card p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold font-mono text-white">8.10</div>
+                            <div class="text-[11px] text-gray-400 font-medium uppercase tracking-wider mt-1">B.E. CGPA</div>
                         </div>
-                        <div class="metric-pill">
-                            <span class="metric-num">8.94</span>
-                            <span class="metric-label">Diploma CGPA</span>
+                        <div class="linear-card p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold font-mono text-white">8.94</div>
+                            <div class="text-[11px] text-gray-400 font-medium uppercase tracking-wider mt-1">Diploma CGPA</div>
                         </div>
-                        <div class="metric-pill">
-                            <span class="metric-num">4</span>
-                            <span class="metric-label">Internships</span>
+                        <div class="linear-card p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold font-mono text-white">4</div>
+                            <div class="text-[11px] text-gray-400 font-medium uppercase tracking-wider mt-1">Internships</div>
                         </div>
                     </div>
 
-                    <!-- Primary CTAs with GitHub Prominence -->
-                    <div class="hero-cta-group">
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="btn btn-github">
-                            <i class="fa-brands fa-github"></i> GitHub Profile
+                    <!-- Primary CTAs -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm border border-gray-700 hover:border-cyan-500/50 hover:text-cyan-400 shadow-lg hover:shadow-[0_0_20px_rgba(6,182,212,0.25)] transition-all">
+                            <i class="fa-brands fa-github text-base"></i>
+                            <span>GitHub Profile</span>
                         </a>
-                        <a href="#contact" class="btn btn-outline">
-                            <i class="fa-solid fa-paper-plane"></i> Get In Touch
-                        </a>
-                        <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="btn btn-icon-only" title="LinkedIn">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                        <a href="#projects" class="btn btn-icon-only" title="View Projects">
+                        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 font-semibold text-sm border border-cyan-500/30 transition-all">
                             <i class="fa-solid fa-code"></i>
+                            <span>Explore Projects</span>
+                        </a>
+                        <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="p-3 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-gray-700 transition-all" title="LinkedIn Profile">
+                            <i class="fa-brands fa-linkedin-in text-base"></i>
                         </a>
                     </div>
+
                 </div>
 
-                <!-- Hero Right: Interactive Terminal Window -->
-                <div class="glass-card hero-terminal-card">
-                    <div class="terminal-header">
-                        <div class="terminal-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
+                <!-- Right Interactive Code Terminal Card -->
+                <div class="lg:col-span-5">
+                    <div class="linear-card rounded-xl overflow-hidden border-gray-800 shadow-2xl bg-gray-950/90">
+                        <div class="px-4 py-3 bg-gray-900/80 border-b border-gray-800 flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                            </div>
+                            <span class="font-mono text-xs text-gray-400">riscv_core_top.v</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">VERILOG_HDL</span>
                         </div>
-                        <div class="terminal-title">
-                            <i class="fa-solid fa-terminal"></i> omkar_system_init.v
-                        </div>
-                        <span class="terminal-badge">VERILOG_HDL</span>
-                    </div>
 
-                    <div class="terminal-body">
-                        <pre><code><span class="t-comment">// Omkar Angadi - System Architecture</span>
-<span class="t-keyword">module</span> <span class="t-func">riscv_core_top</span> (
-    <span class="t-keyword">input</span>  <span class="t-type">wire</span> clk_50mhz,
-    <span class="t-keyword">input</span>  <span class="t-type">wire</span> rst_n,
-    <span class="t-keyword">output</span> <span class="t-type">wire</span> [31:0] ethernet_tx_data,
-    <span class="t-keyword">output</span> <span class="t-type">wire</span> system_ready
+                        <div class="p-4 font-mono text-xs leading-relaxed text-gray-300 overflow-x-auto">
+<pre><code><span class="text-gray-500">// Omkar Angadi — RTL Core Top</span>
+<span class="text-blue-400">module</span> <span class="text-cyan-400">riscv_ethernet_top</span> (
+    <span class="text-blue-400">input</span>  <span class="text-purple-400">wire</span> clk_50mhz,
+    <span class="text-blue-400">input</span>  <span class="text-purple-400">wire</span> rst_n,
+    <span class="text-blue-400">output</span> <span class="text-purple-400">wire</span> [31:0] tx_data
 );
 
-<span class="t-comment">// Hardware Verification & Metrics</span>
-<span class="t-keyword">parameter</span> COVERAGE = <span class="t-num">84.0</span>; <span class="t-comment">// ModelSim verified</span>
-<span class="t-keyword">parameter</span> ACCURACY = <span class="t-num">93.0</span>; <span class="t-comment">// FPGA detection</span>
+<span class="text-gray-500">// Metrics Verification</span>
+<span class="text-blue-400">parameter</span> COVERAGE = <span class="text-amber-400">84.0</span>;
+<span class="text-blue-400">parameter</span> ACCURACY = <span class="text-amber-400">93.0</span>;
 
-<span class="t-keyword">always</span> @(<span class="t-keyword">posedge</span> clk_50mhz) <span class="t-keyword">begin</span>
-    <span class="t-keyword">if</span> (!rst_n) <span class="t-keyword">begin</span>
-        status &lt;= <span class="t-string">"INITIALIZING_RTL..."</span>;
-    <span class="t-keyword">end</span> <span class="t-keyword">else</span> <span class="t-keyword">begin</span>
-        status &lt;= <span class="t-string">"READY_FOR_DEPLOYMENT"</span>;
-    <span class="t-keyword">end</span>
-<span class="t-keyword">end</span>
-<span class="t-keyword">endmodule</span></code></pre>
-                    </div>
-
-                    <div class="terminal-footer">
-                        <span class="t-prompt">$</span> <span class="t-cmd">simulation_status</span> --coverage=84% --accuracy=93%
-                        <span class="t-success">[SUCCESS] RTL Synthesis Passed</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ================= EXPERIENCE TIMELINE SECTION ================= -->
-        <section id="experience" class="section-block">
-            <div class="section-header">
-                <span class="section-subtitle"><i class="fa-solid fa-briefcase"></i> CAREER PATH</span>
-                <h2 class="section-title">Work Experience & Internships</h2>
-                <div class="header-line"></div>
-            </div>
-
-            <div class="timeline-container">
-                
-                <!-- Item 1: Crofting Technologies (Current Feature) -->
-                <div class="timeline-item feature-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card timeline-card">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="badge badge-accent">Current Role</span>
-                                <h3 class="role-title">Summer Engineering Intern</h3>
-                                <h4 class="company-name"><i class="fa-solid fa-building"></i> Crofting Technologies</h4>
-                            </div>
-                            <span class="timeline-date"><i class="fa-regular fa-calendar"></i> June 2024 – Present</span>
+<span class="text-blue-400">always</span> @(<span class="text-blue-400">posedge</span> clk_50mhz) <span class="text-blue-400">begin</span>
+    <span class="text-blue-400">if</span> (!rst_n) status &lt;= <span class="text-emerald-400">"IDLE"</span>;
+    <span class="text-blue-400">else</span>       status &lt;= <span class="text-emerald-400">"VERIFIED"</span>;
+<span class="text-blue-400">end</span>
+<span class="text-blue-400">endmodule</span></code></pre>
                         </div>
-                        
-                        <ul class="experience-list">
-                            <li>Architected and validated a <strong>Verilog HDL-based RISC-V core</strong> integrated with an Ethernet protocol module on FPGA target hardware.</li>
-                            <li>Achieved <strong>84% code coverage</strong> during RTL verification using <strong>ModelSim / QuestaSim</strong> simulation suites.</li>
-                            <li>Developing an <strong>FPGA object detection pipeline</strong> using MATLAB/Simulink for simulation validation and RTL optimization (achieving <strong>93% detection accuracy</strong> and <strong>78% precision</strong>).</li>
-                        </ul>
 
-                        <div class="tech-chip-group">
-                            <span class="tech-chip">Verilog HDL</span>
-                            <span class="tech-chip">FPGA</span>
-                            <span class="tech-chip">RISC-V Core</span>
-                            <span class="tech-chip">ModelSim / QuestaSim</span>
-                            <span class="tech-chip">MATLAB & Simulink</span>
-                            <span class="tech-chip">RTL Verification</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 2: TATA Motors -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card timeline-card">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="badge">Industry Experience</span>
-                                <h3 class="role-title">Quality Inspector</h3>
-                                <h4 class="company-name"><i class="fa-solid fa-industry"></i> TATA Motors</h4>
-                            </div>
-                            <span class="timeline-date"><i class="fa-regular fa-calendar"></i> Nov 2023 – Mar 2024</span>
-                        </div>
-                        
-                        <ul class="experience-list">
-                            <li>Executed quality inspection protocols, component tolerance checks, and assembly line compliance monitoring.</li>
-                            <li>Maintained detailed technical inspection logs, test reports, and non-conformance records for quality assurance.</li>
-                        </ul>
-
-                        <div class="tech-chip-group">
-                            <span class="tech-chip">Quality Control</span>
-                            <span class="tech-chip">Tolerance Inspection</span>
-                            <span class="tech-chip">Technical Documentation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 3: Wisne Technologies -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card timeline-card">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="badge">Internship</span>
-                                <h3 class="role-title">Networking Intern</h3>
-                                <h4 class="company-name"><i class="fa-solid fa-network-wired"></i> Wisne (Hubli)</h4>
-                            </div>
-                            <span class="timeline-date"><i class="fa-regular fa-calendar"></i> Feb 2023</span>
-                        </div>
-                        
-                        <p class="timeline-desc">Gained practical knowledge in computer networking, OSI layer architecture, routing protocols, subnetting, and hardware switch/router configuration.</p>
-
-                        <div class="tech-chip-group">
-                            <span class="tech-chip">Computer Networks</span>
-                            <span class="tech-chip">IP Subnetting</span>
-                            <span class="tech-chip">Routing Protocols</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 4: Amba Softwares (Python) -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card timeline-card">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="badge">Internship</span>
-                                <h3 class="role-title">Python Programming Intern</h3>
-                                <h4 class="company-name"><i class="fa-solid fa-laptop-code"></i> Amba Softwares (Dharwad)</h4>
-                            </div>
-                            <span class="timeline-date"><i class="fa-regular fa-calendar"></i> Sep 2022</span>
-                        </div>
-                        
-                        <p class="timeline-desc">Mastered core Python programming principles, data structures, OOP concepts, and script automation during intensive offline internship program.</p>
-
-                        <div class="tech-chip-group">
-                            <span class="tech-chip">Python</span>
-                            <span class="tech-chip">Data Structures</span>
-                            <span class="tech-chip">OOP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 5: Amba Softwares (C) -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card timeline-card">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="badge">Internship</span>
-                                <h3 class="role-title">C Programming Intern</h3>
-                                <h4 class="company-name"><i class="fa-solid fa-code"></i> Amba Softwares (Dharwad)</h4>
-                            </div>
-                            <span class="timeline-date"><i class="fa-regular fa-calendar"></i> Apr 2022</span>
-                        </div>
-                        
-                        <p class="timeline-desc">Practiced low-level C programming, memory management, pointers, and algorithm design to build robust foundational logic for embedded systems.</p>
-
-                        <div class="tech-chip-group">
-                            <span class="tech-chip">C Language</span>
-                            <span class="tech-chip">Pointers & Memory</span>
-                            <span class="tech-chip">Algorithms</span>
+                        <div class="px-4 py-2.5 bg-gray-900/60 border-t border-gray-800 text-[11px] font-mono text-gray-400 flex items-center justify-between">
+                            <span><span class="text-cyan-400">$</span> simulation --check</span>
+                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-check"></i> ModelSim Passed</span>
                         </div>
                     </div>
                 </div>
 
             </div>
+
         </section>
 
 
         <!-- ================= FEATURED PROJECTS SECTION ================= -->
-        <section id="projects" class="section-block">
-            <div class="section-header">
-                <span class="section-subtitle"><i class="fa-solid fa-microchip"></i> PORTFOLIO SHOWCASE</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="header-line"></div>
+        <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">ENGINEERING PORTFOLIO</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-1">Featured Projects</h2>
+                </div>
+                <p class="text-gray-400 text-sm max-w-md mt-2 md:mt-0">
+                    RTL cores, embedded microcontrollers, custom hardware PCBs, and algorithmic simulations.
+                </p>
             </div>
 
-            <!-- Project Category Filter Buttons -->
-            <div class="project-filter-bar">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="fpga">FPGA & Verilog</button>
-                <button class="filter-btn" data-filter="embedded">Embedded & IoT</button>
-                <button class="filter-btn" data-filter="software">Software & Apps</button>
-            </div>
-
-            <div class="projects-grid">
+            <!-- Clean 2-Column Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                <!-- Project 1: RISC-V Core (Wide Featured) -->
-                <div class="glass-card project-card featured-project" data-category="fpga">
-                    <div class="project-header">
-                        <div class="project-type-badge"><i class="fa-solid fa-microchip"></i> FPGA / RTL Design</div>
-                        <span class="metric-badge accent-badge"><i class="fa-solid fa-square-check"></i> 84% Code Coverage</span>
-                    </div>
-                    
-                    <h3 class="project-title">Verilog RISC-V Core & Ethernet Integration</h3>
-                    
-                    <p class="project-desc">
-                        Designed and verified a 32-bit Verilog HDL-based RISC-V processor core integrated with a high-throughput Ethernet module. Conducted thorough RTL simulation and testbench verification on ModelSim/QuestaSim achieving 84% code coverage before FPGA hardware deployment.
-                    </p>
+                <!-- Project 1: RISC-V Core -->
+                <div class="linear-card rounded-2xl p-6 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">FPGA / RTL Design</span>
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">84% Code Coverage</span>
+                        </div>
 
-                    <div class="project-highlights">
-                        <div class="highlight-item"><i class="fa-solid fa-terminal"></i> ModelSim & QuestaSim Testbench Verified</div>
-                        <div class="highlight-item"><i class="fa-solid fa-network-wired"></i> Ethernet Hardware Module Synthesis</div>
-                    </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
+                            Verilog RISC-V Core & Ethernet Integration
+                        </h3>
 
-                    <div class="tech-chip-group">
-                        <span class="tech-chip">Verilog HDL</span>
-                        <span class="tech-chip">FPGA</span>
-                        <span class="tech-chip">RISC-V</span>
-                        <span class="tech-chip">Ethernet Protocol</span>
-                        <span class="tech-chip">ModelSim</span>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Architected and verified a 32-bit Verilog HDL-based RISC-V processor core integrated with Ethernet protocol modules on FPGA target hardware. ModelSim & QuestaSim testbench verification.
+                        </p>
                     </div>
 
-                    <div class="project-footer">
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="btn btn-github-sm">
-                            <i class="fa-brands fa-github"></i> View Code on GitHub
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Verilog HDL</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">FPGA</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">RISC-V</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">ModelSim</span>
+                        </div>
+
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-white transition-colors">
+                            <i class="fa-brands fa-github text-sm"></i>
+                            <span>View Code on GitHub</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 2: FPGA Object Detection -->
-                <div class="glass-card project-card" data-category="fpga">
-                    <div class="project-header">
-                        <div class="project-type-badge"><i class="fa-solid fa-eye"></i> MATLAB / RTL</div>
-                        <span class="metric-badge accent-badge"><i class="fa-solid fa-bullseye"></i> 93% Accuracy</span>
-                    </div>
-                    
-                    <h3 class="project-title">FPGA Object Detection System</h3>
-                    
-                    <p class="project-desc">
-                        Developing an optimized FPGA hardware object detection pipeline. Utilizes MATLAB/Simulink for algorithm behavioral modeling, target feature extraction, and RTL resource optimization (achieving 93% accuracy & 78% precision).
-                    </p>
+                <div class="linear-card rounded-2xl p-6 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">MATLAB / RTL</span>
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">93% Accuracy</span>
+                        </div>
 
-                    <div class="tech-chip-group">
-                        <span class="tech-chip">MATLAB</span>
-                        <span class="tech-chip">Simulink</span>
-                        <span class="tech-chip">FPGA RTL</span>
-                        <span class="tech-chip">DSP Modules</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
+                            FPGA Hardware Object Detection Pipeline
+                        </h3>
+
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Developing an optimized hardware object detection system. Utilizes MATLAB & Simulink for algorithm verification and RTL resource optimization (achieving 93% accuracy & 78% precision).
+                        </p>
                     </div>
 
-                    <div class="project-footer">
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="btn btn-github-sm">
-                            <i class="fa-brands fa-github"></i> View Code on GitHub
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">MATLAB</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Simulink</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">FPGA RTL</span>
+                        </div>
+
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-white transition-colors">
+                            <i class="fa-brands fa-github text-sm"></i>
+                            <span>View Code on GitHub</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 3: Women's Safety System -->
-                <div class="glass-card project-card" data-category="embedded software">
-                    <div class="project-header">
-                        <div class="project-type-badge"><i class="fa-solid fa-shield-halved"></i> IoT / Mobile System</div>
-                        <span class="metric-badge"><i class="fa-solid fa-location-crosshairs"></i> 20+ Locations Tested</span>
-                    </div>
-                    
-                    <h3 class="project-title">Women's Safety Alert System</h3>
-                    
-                    <p class="project-desc">
-                        Built a real-time emergency alert and live location telemetry system. Transmits instant SMS/cloud alerts with GPS coordinates to pre-selected emergency contacts, validated across 20 test locations and 30 active accounts.
-                    </p>
+                <div class="linear-card rounded-2xl p-6 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">IoT & Mobile</span>
+                            <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-1 rounded-full border border-gray-800">20+ Locations Tested</span>
+                        </div>
 
-                    <div class="tech-chip-group">
-                        <span class="tech-chip">Android Studio</span>
-                        <span class="tech-chip">GPS Telemetry</span>
-                        <span class="tech-chip">Node.js</span>
-                        <span class="tech-chip">HTML/CSS</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
+                            Women's Safety Alert System
+                        </h3>
+
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Built an emergency alert system that shares user live location telemetry instantly. Tested across 20 locations and 30 active accounts with reliable Android/Web synchronization.
+                        </p>
                     </div>
 
-                    <div class="project-footer">
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="btn btn-github-sm">
-                            <i class="fa-brands fa-github"></i> View Code on GitHub
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Android Studio</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Node.js</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">HTML/CSS</span>
+                        </div>
+
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-white transition-colors">
+                            <i class="fa-brands fa-github text-sm"></i>
+                            <span>View Code on GitHub</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 4: IR Based Radar -->
-                <div class="glass-card project-card" data-category="embedded">
-                    <div class="project-header">
-                        <div class="project-type-badge"><i class="fa-solid fa-radar"></i> Hardware / Custom PCB</div>
-                        <span class="metric-badge"><i class="fa-solid fa-rotate"></i> 360° Continuous Scan</span>
-                    </div>
-                    
-                    <h3 class="project-title">IR Based 360° Radar Prototype</h3>
-                    
-                    <p class="project-desc">
-                        Engineered an autonomous IR-based radar mechanism for real-time target proximity detection and perimeter intrusion monitoring. Built on a custom-etched & hand-soldered PCB with LM324 op-amp signal conditioning.
-                    </p>
+                <div class="linear-card rounded-2xl p-6 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">Hardware / Custom PCB</span>
+                            <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-1 rounded-full border border-gray-800">360° Continuous Scan</span>
+                        </div>
 
-                    <div class="tech-chip-group">
-                        <span class="tech-chip">IR Sensors</span>
-                        <span class="tech-chip">LM324 Op-Amp</span>
-                        <span class="tech-chip">Custom PCB Layout</span>
-                        <span class="tech-chip">Microcontroller</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
+                            IR Based 360° Radar Prototype
+                        </h3>
+
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Engineered an IR-based radar prototype for real-time target proximity detection and perimeter intrusion monitoring on a custom-etched & soldered PCB with LM324 op-amps.
+                        </p>
                     </div>
 
-                    <div class="project-footer">
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="btn btn-github-sm">
-                            <i class="fa-brands fa-github"></i> View Code on GitHub
-                        </a>
-                    </div>
-                </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Custom PCB</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">IR Sensors</span>
+                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">LM324</span>
+                        </div>
 
-                <!-- Project 5: Arduino Based Air Mouse -->
-                <div class="glass-card project-card" data-category="embedded">
-                    <div class="project-header">
-                        <div class="project-type-badge"><i class="fa-solid fa-hand-pointer"></i> ESP32 / Embedded</div>
-                        <span class="metric-badge"><i class="fa-solid fa-wifi"></i> Low-Latency Wireless</span>
-                    </div>
-                    
-                    <h3 class="project-title">Arduino / ESP32 Wireless Air Mouse</h3>
-                    
-                    <p class="project-desc">
-                        Developed a low-latency gesture-controlled wireless mouse. Interfaces MPU6050 accelerometer/gyroscope sensors with ESP32 microcontroller to translate spatial hand motion into smooth screen cursor navigation.
-                    </p>
-
-                    <div class="tech-chip-group">
-                        <span class="tech-chip">ESP32</span>
-                        <span class="tech-chip">MPU6050 IMU</span>
-                        <span class="tech-chip">Arduino IDE</span>
-                        <span class="tech-chip">HID Protocol</span>
-                    </div>
-
-                    <div class="project-footer">
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="btn btn-github-sm">
-                            <i class="fa-brands fa-github"></i> View Code on GitHub
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-white transition-colors">
+                            <i class="fa-brands fa-github text-sm"></i>
+                            <span>View Code on GitHub</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ================= SKILLS MATRIX SECTION ================= -->
-        <section id="skills" class="section-block">
-            <div class="section-header">
-                <span class="section-subtitle"><i class="fa-solid fa-layer-group"></i> COMPETENCIES</span>
-                <h2 class="section-title">Technical Skills Matrix</h2>
-                <div class="header-line"></div>
+        <!-- ================= EXPERIENCE & SKILLS (TABBED SWITCHER) ================= -->
+        <section id="experience-skills" class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+            
+            <div class="mb-10">
+                <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">CAREER & CAPABILITIES</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Experience & Skills Breakdown</h2>
             </div>
 
-            <div class="skills-matrix-grid">
+            <!-- Minimalist Tab Bar -->
+            <div class="flex border-b border-gray-800 mb-8 font-mono text-sm">
+                <button id="tabExpBtn" onclick="switchTab('exp')" class="px-6 py-3 font-semibold text-cyan-400 border-b-2 border-cyan-400 transition-all">
+                    <i class="fa-solid fa-briefcase mr-2"></i>Work Experience
+                </button>
+                <button id="tabSkillBtn" onclick="switchTab('skill')" class="px-6 py-3 font-semibold text-gray-400 border-b-2 border-transparent hover:text-white transition-all">
+                    <i class="fa-solid fa-layer-group mr-2"></i>Technical Skills Matrix
+                </button>
+            </div>
+
+            <!-- Tab 1: Work Experience Timeline -->
+            <div id="tabExpContent" class="space-y-6">
                 
-                <!-- Category 1: Languages -->
-                <div class="glass-card skill-card">
-                    <div class="skill-icon-header">
-                        <div class="icon-box"><i class="fa-solid fa-code"></i></div>
-                        <h3>Programming & HDLs</h3>
+                <!-- Experience 1 -->
+                <div class="linear-card rounded-xl p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                        <div>
+                            <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded border border-cyan-500/30">Current Role</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Summer Engineering Intern</h3>
+                            <div class="text-sm text-gray-400 font-medium"><i class="fa-solid fa-building mr-1"></i> Crofting Technologies</div>
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-800">June 2024 – Present</span>
                     </div>
-                    <ul class="skill-list">
-                        <li><span class="skill-name">Verilog HDL</span> <span class="skill-level">Advanced</span></li>
-                        <li><span class="skill-name">C Programming</span> <span class="skill-level">Proficient</span></li>
-                        <li><span class="skill-name">Python</span> <span class="skill-level">Intermediate</span></li>
-                        <li><span class="skill-name">HTML5 / CSS3</span> <span class="skill-level">Proficient</span></li>
-                        <li><span class="skill-name">Assembly (8051)</span> <span class="skill-level">Foundational</span></li>
+                    <ul class="text-sm text-gray-300 space-y-2 list-disc list-inside mb-4">
+                        <li>Built and verified a <strong>Verilog HDL-based RISC-V core</strong> integrated with Ethernet modules on FPGA.</li>
+                        <li>Achieved <strong>84% code coverage</strong> on ModelSim / QuestaSim verification suite.</li>
+                        <li>Developing an <strong>FPGA object detection system</strong> using MATLAB/Simulink (<span class="font-mono text-cyan-300">93% detection accuracy</span>).</li>
                     </ul>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-cyan-400 border border-gray-800">Verilog HDL</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-cyan-400 border border-gray-800">FPGA</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-cyan-400 border border-gray-800">RISC-V</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-cyan-400 border border-gray-800">ModelSim</span>
+                    </div>
                 </div>
 
-                <!-- Category 2: Hardware & Microcontrollers -->
-                <div class="glass-card skill-card">
-                    <div class="skill-icon-header">
-                        <div class="icon-box"><i class="fa-solid fa-microchip"></i></div>
-                        <h3>Hardware & MCU</h3>
+                <!-- Experience 2 -->
+                <div class="linear-card rounded-xl p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                        <div>
+                            <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-0.5 rounded border border-gray-800">Industry</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Quality Inspector</h3>
+                            <div class="text-sm text-gray-400 font-medium"><i class="fa-solid fa-industry mr-1"></i> TATA Motors</div>
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-800">Nov 2023 – Mar 2024</span>
                     </div>
-                    <ul class="skill-list">
-                        <li><span class="skill-name">FPGA Boards (Xilinx/Altera)</span> <span class="skill-level">Proficient</span></li>
-                        <li><span class="skill-name">ESP32 & ESP8266</span> <span class="skill-level">Advanced</span></li>
-                        <li><span class="skill-name">8051 Microcontroller</span> <span class="skill-level">Proficient</span></li>
-                        <li><span class="skill-name">Arduino Microcontrollers</span> <span class="skill-level">Advanced</span></li>
-                        <li><span class="skill-name">Custom PCB Soldering & Layout</span> <span class="skill-level">Hands-on</span></li>
-                    </ul>
+                    <p class="text-sm text-gray-300 mb-3">Executed component quality inspection, tolerance checks, assembly line validation, and test record maintenance.</p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-gray-300 border border-gray-800">Quality Control</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-gray-300 border border-gray-800">Assembly Inspection</span>
+                    </div>
                 </div>
 
-                <!-- Category 3: EDA Tools & Simulation -->
-                <div class="glass-card skill-card">
-                    <div class="skill-icon-header">
-                        <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
-                        <h3>EDA & Simulation Tools</h3>
+                <!-- Experience 3 & 4 Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="linear-card rounded-xl p-5">
+                        <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-0.5 rounded border border-gray-800">Internship</span>
+                        <h3 class="text-base font-bold text-white mt-1">Networking Intern</h3>
+                        <div class="text-xs text-cyan-400 font-medium mb-2">Wisne (Hubli) | Feb 2023</div>
+                        <p class="text-xs text-gray-400">Hands-on computer networking, OSI protocols, IP subnetting, and router setup.</p>
                     </div>
-                    <ul class="skill-list">
-                        <li><span class="skill-name">ModelSim / QuestaSim</span> <span class="skill-level">Advanced</span></li>
-                        <li><span class="skill-name">MATLAB & Simulink</span> <span class="skill-level">Proficient</span></li>
-                        <li><span class="skill-name">Proteus & Multisim</span> <span class="skill-level">Proficient</span></li>
-                        <li><span class="skill-name">DipTrace PCB Layout</span> <span class="skill-level">Intermediate</span></li>
-                        <li><span class="skill-name">Arduino IDE & VS Code</span> <span class="skill-level">Advanced</span></li>
-                    </ul>
-                </div>
 
-                <!-- Category 4: Protocols & Concepts -->
-                <div class="glass-card skill-card">
-                    <div class="skill-icon-header">
-                        <div class="icon-box"><i class="fa-solid fa-network-wired"></i></div>
-                        <h3>Protocols & Concepts</h3>
+                    <div class="linear-card rounded-xl p-5">
+                        <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-0.5 rounded border border-gray-800">Internship</span>
+                        <h3 class="text-base font-bold text-white mt-1">Python Programming Intern</h3>
+                        <div class="text-xs text-cyan-400 font-medium mb-2">Amba Softwares | Sep 2022</div>
+                        <p class="text-xs text-gray-400">Python OOP fundamentals, algorithm design, data structures, and script automation.</p>
                     </div>
-                    <ul class="skill-list">
-                        <li><span class="skill-name">UART / SPI / I2C</span> <span class="skill-level">Advanced</span></li>
-                        <li><span class="skill-name">Ethernet Interfacing</span> <span class="skill-level">Proficient</span></li>
-                        <li><span class="skill-name">RTL Testbench Verification</span> <span class="skill-level">Advanced</span></li>
-                        <li><span class="skill-name">IoT Architecture & Sensors</span> <span class="skill-level">Proficient</span></li>
-                        <li><span class="skill-name">Quality Assurance Protocols</span> <span class="skill-level">Certified</span></li>
-                    </ul>
                 </div>
 
             </div>
+
+            <!-- Tab 2: Technical Skills Matrix -->
+            <div id="tabSkillContent" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="linear-card rounded-xl p-6">
+                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-code text-cyan-400"></i> Programming Languages
+                    </h3>
+                    <div class="space-y-3 font-mono text-xs">
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
+                            <span class="text-gray-200">Verilog HDL</span>
+                            <span class="text-cyan-400">Advanced / RTL</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
+                            <span class="text-gray-200">C Programming</span>
+                            <span class="text-cyan-400">Proficient / Embedded</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
+                            <span class="text-gray-200">Python</span>
+                            <span class="text-cyan-400">Intermediate</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-200">Assembly (8051)</span>
+                            <span class="text-cyan-400">Foundational</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="linear-card rounded-xl p-6">
+                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-microchip text-cyan-400"></i> Hardware & Microcontrollers
+                    </h3>
+                    <div class="space-y-3 font-mono text-xs">
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
+                            <span class="text-gray-200">FPGA Boards</span>
+                            <span class="text-cyan-400">Xilinx / Altera</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
+                            <span class="text-gray-200">ESP32 & ESP8266</span>
+                            <span class="text-cyan-400">Advanced IoT</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
+                            <span class="text-gray-200">8051 & Arduino</span>
+                            <span class="text-cyan-400">Interfacing</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-200">Custom PCB Layout</span>
+                            <span class="text-cyan-400">Hand Soldering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="linear-card rounded-xl p-6">
+                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-laptop-code text-cyan-400"></i> EDA Tools & Simulation
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">ModelSim / QuestaSim</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">MATLAB & Simulink</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">Proteus</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">Multisim</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">DipTrace</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">Arduino IDE</span>
+                    </div>
+                </div>
+
+                <div class="linear-card rounded-xl p-6">
+                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-network-wired text-cyan-400"></i> Protocols & Verification
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">UART</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">SPI</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">I2C</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">Ethernet Protocol</span>
+                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">RTL Testbenches</span>
+                    </div>
+                </div>
+
+            </div>
+
         </section>
 
 
         <!-- ================= EDUCATION & CERTIFICATIONS ================= -->
-        <section id="education" class="section-block">
-            <div class="split-grid-2col">
+        <section id="education" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 border-t border-gray-800/60">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 
-                <!-- Education Col -->
+                <!-- Academic Credentials -->
                 <div>
-                    <div class="section-header align-left">
-                        <span class="section-subtitle"><i class="fa-solid fa-graduation-cap"></i> ACADEMICS</span>
-                        <h2 class="section-title">Education</h2>
-                        <div class="header-line"></div>
-                    </div>
+                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">ACADEMICS</span>
+                    <h2 class="text-2xl font-extrabold text-white mt-1 mb-6">Education Credentials</h2>
 
-                    <div class="edu-card-list">
-                        
-                        <div class="glass-card edu-card">
-                            <div class="edu-header">
-                                <span class="edu-year">2027 Expected</span>
-                                <span class="score-badge mono-num">CGPA: 8.10</span>
+                    <div class="space-y-4">
+                        <div class="linear-card p-5 rounded-xl">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-base font-bold text-white">B.E. in Electronics & Communication</h3>
+                                <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded border border-cyan-500/30">CGPA: 8.10</span>
                             </div>
-                            <h3 class="edu-degree">B.E. in Electronics & Communication</h3>
-                            <h4 class="edu-inst"><i class="fa-solid fa-university"></i> S.D.M. College of Engineering and Technology, Dharwad</h4>
-                            <p class="edu-detail">Currently in 4th year (Up to 6th Sem CGPA: 8.10). Focusing on Advanced Digital System Design, Embedded Systems, RISC-V, and VLSI verification.</p>
+                            <div class="text-xs text-gray-400 mb-1"><i class="fa-solid fa-university mr-1"></i> S.D.M. College of Engineering & Tech, Dharwad</div>
+                            <div class="text-xs text-gray-500 font-mono">2027 Expected • Focusing on Digital System Design & VLSI</div>
                         </div>
 
-                        <div class="glass-card edu-card">
-                            <div class="edu-header">
-                                <span class="edu-year">2024 Completed</span>
-                                <span class="score-badge mono-num">CGPA: 8.94</span>
+                        <div class="linear-card p-5 rounded-xl">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-base font-bold text-white">Diploma in ECE</h3>
+                                <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded border border-cyan-500/30">CGPA: 8.94</span>
                             </div>
-                            <h3 class="edu-degree">Diploma in Electronics & Communication</h3>
-                            <h4 class="edu-inst"><i class="fa-solid fa-school"></i> JSS's K.H. Kabbur Institute of Engineering, Dharwad</h4>
-                            <p class="edu-detail">Graduated with Distinction (8.94 CGPA). Specialized in hardware circuit design, microcontrollers, communication systems, and electronic instrumentation.</p>
+                            <div class="text-xs text-gray-400 mb-1"><i class="fa-solid fa-school mr-1"></i> JSS K.H. Kabbur Institute of Engineering, Dharwad</div>
+                            <div class="text-xs text-gray-500 font-mono">2024 Completed • Distinction</div>
                         </div>
-
-                        <div class="glass-card edu-card">
-                            <div class="edu-header">
-                                <span class="edu-year">2021 Completed</span>
-                                <span class="score-badge mono-num">79.36%</span>
-                            </div>
-                            <h3 class="edu-degree">SSLC</h3>
-                            <h4 class="edu-inst"><i class="fa-solid fa-school-flag"></i> Basel Mission English Medium High School, Dharwad</h4>
-                            <p class="edu-detail">First Class with Distinction foundation in mathematics, physical sciences, and computer logic.</p>
-                        </div>
-
                     </div>
                 </div>
 
-                <!-- Certifications Col -->
+                <!-- Certifications -->
                 <div>
-                    <div class="section-header align-left">
-                        <span class="section-subtitle"><i class="fa-solid fa-certificate"></i> CREDENTIALS</span>
-                        <h2 class="section-title">Certifications</h2>
-                        <div class="header-line"></div>
-                    </div>
+                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">CREDENTIALS</span>
+                    <h2 class="text-2xl font-extrabold text-white mt-1 mb-6">Certifications</h2>
 
-                    <div class="cert-card-list">
-                        
-                        <div class="glass-card cert-card">
-                            <div class="cert-icon-box"><i class="fa-solid fa-shield-virus"></i></div>
+                    <div class="space-y-3">
+                        <div class="linear-card p-4 rounded-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0 text-sm">
+                                <i class="fa-solid fa-shield-virus"></i>
+                            </div>
                             <div>
-                                <h3 class="cert-title">Fundamentals of IoT Security</h3>
-                                <p class="cert-org">MindLuster | <span class="mono-num">Cert No: 8498362673</span></p>
+                                <h4 class="text-sm font-semibold text-white">Fundamentals of IoT Security</h4>
+                                <p class="text-xs text-gray-400 font-mono">MindLuster | Cert No: 8498362673</p>
                             </div>
                         </div>
 
-                        <div class="glass-card cert-card">
-                            <div class="cert-icon-box"><i class="fa-brands fa-python"></i></div>
+                        <div class="linear-card p-4 rounded-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0 text-sm">
+                                <i class="fa-brands fa-python"></i>
+                            </div>
                             <div>
-                                <h3 class="cert-title">Python Programming Internship Certificate</h3>
-                                <p class="cert-org">Amba Softwares (Offline Internship)</p>
+                                <h4 class="text-sm font-semibold text-white">Python Programming Internship</h4>
+                                <p class="text-xs text-gray-400 font-mono">Amba Softwares (Offline)</p>
                             </div>
                         </div>
 
-                        <div class="glass-card cert-card">
-                            <div class="cert-icon-box"><i class="fa-solid fa-code"></i></div>
+                        <div class="linear-card p-4 rounded-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0 text-sm">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
                             <div>
-                                <h3 class="cert-title">C Programming Certification</h3>
-                                <p class="cert-org">Amba Softwares</p>
+                                <h4 class="text-sm font-semibold text-white">C Programming Certification</h4>
+                                <p class="text-xs text-gray-400 font-mono">Amba Softwares</p>
                             </div>
                         </div>
-
-                        <div class="glass-card cert-card">
-                            <div class="cert-icon-box"><i class="fa-solid fa-network-wired"></i></div>
-                            <div>
-                                <h3 class="cert-title">Computer Networking Systems</h3>
-                                <p class="cert-org">Wisne Technologies</p>
-                            </div>
-                        </div>
-
-                        <div class="glass-card cert-card">
-                            <div class="cert-icon-box"><i class="fa-solid fa-chart-line"></i></div>
-                            <div>
-                                <h3 class="cert-title">IoT Edge Computing & Analytics</h3>
-                                <p class="cert-org">Embedded Systems Specialization</p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ================= CONTACT SECTION ================= -->
-        <section id="contact" class="section-block">
-            <div class="section-header">
-                <span class="section-subtitle"><i class="fa-solid fa-comments"></i> GET IN TOUCH</span>
-                <h2 class="section-title">Contact & Communication</h2>
-                <div class="header-line"></div>
-            </div>
-
-            <div class="contact-grid">
-                
-                <!-- Contact Details & Action Card -->
-                <div class="glass-card contact-info-card">
-                    <h3 class="contact-card-title">Let's Discuss Engineering Opportunities</h3>
-                    <p class="contact-card-desc">
-                        Whether you have a question about embedded systems design, Verilog HDL verification, internship opportunities, or potential engineering collaborations—feel free to drop me a line!
+        <!-- ================= CONTACT & FOOTER SECTION ================= -->
+        <section id="contact" class="max-w-6xl mx-auto px-4 sm:px-6 pt-16">
+            
+            <div class="linear-card rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden bg-gradient-to-b from-gray-900/80 to-gray-950">
+                <div class="max-w-2xl mx-auto space-y-6">
+                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">GET IN TOUCH</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Build Engineering Solutions</h2>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        Open for embedded systems development, Verilog HDL verification, FPGA hardware design, and engineering collaborations.
                     </p>
 
-                    <div class="contact-items-list">
-                        
-                        <div class="contact-item">
-                            <div class="c-icon"><i class="fa-solid fa-envelope"></i></div>
-                            <div class="c-text">
-                                <strong>Email Address</strong>
-                                <a href="mailto:omkarangadi0221@gmail.com" class="c-link">omkarangadi0221@gmail.com</a>
-                            </div>
-                            <button class="copy-btn" onclick="copyToClipboard('omkarangadi0221@gmail.com', 'Email address copied!')" title="Copy Email">
-                                <i class="fa-regular fa-copy"></i>
-                            </button>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="c-icon"><i class="fa-solid fa-phone"></i></div>
-                            <div class="c-text">
-                                <strong>Phone Number</strong>
-                                <a href="tel:+916366078873" class="c-link">+91 6366078873</a>
-                            </div>
-                            <button class="copy-btn" onclick="copyToClipboard('+916366078873', 'Phone number copied!')" title="Copy Phone Number">
-                                <i class="fa-regular fa-copy"></i>
-                            </button>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="c-icon"><i class="fa-solid fa-location-dot"></i></div>
-                            <div class="c-text">
-                                <strong>Location</strong>
-                                <span>M J Nagar, Dharwad, Karnataka, India</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="contact-social-row">
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="btn btn-github flex-1">
-                            <i class="fa-brands fa-github"></i> GitHub Profile
-                        </a>
-                        <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="btn btn-outline flex-1">
-                            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Interactive Contact Form -->
-                <div class="glass-card contact-form-card">
-                    <h3 class="contact-card-title">Send a Direct Message</h3>
-                    
-                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" required placeholder="John Doe">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" required placeholder="john@example.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" placeholder="Embedded Project Inquiry / Opportunity">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" rows="4" required placeholder="Hello Omkar, I would like to discuss..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary w-100">
-                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                    <!-- Contact Actions -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                        <button onclick="copyToClipboard('omkarangadi0221@gmail.com', 'Email copied to clipboard!')" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold text-sm hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>Copy Email Address</span>
                         </button>
-                        
-                        <div id="formSuccess" class="form-success-alert" style="display: none;">
-                            <i class="fa-solid fa-circle-check"></i> Message sent successfully! I will get back to you shortly.
-                        </div>
-                    </form>
-                </div>
 
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm border border-gray-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-all">
+                            <i class="fa-brands fa-github text-base"></i>
+                            <span>GitHub Profile</span>
+                        </a>
+
+                        <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm border border-gray-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-all">
+                            <i class="fa-brands fa-linkedin-in text-base"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
             </div>
+
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <span class="logo-pulse"></span> Omkar Angadi
-                <p>Electronics & Communication Engineer | Embedded Systems & FPGA Design</p>
+    <footer class="border-t border-gray-800/80 bg-gray-950 py-8 text-center text-xs text-gray-500 font-mono">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 Omkar Angadi — Electronics & Communication Engineer
             </div>
-            
-            <div class="footer-social-links">
-                <a href="https://github.com/omkar022115" target="_blank" rel="noopener" title="GitHub">
-                    <i class="fa-brands fa-github"></i> GitHub
-                </a>
-                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" title="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in"></i> LinkedIn
-                </a>
-                <a href="mailto:omkarangadi0221@gmail.com" title="Email">
-                    <i class="fa-solid fa-envelope"></i> Email
-                </a>
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="hover:text-cyan-400 transition-colors">GitHub</a>
+                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="hover:text-cyan-400 transition-colors">LinkedIn</a>
+                <button onclick="copyToClipboard('omkarangadi0221@gmail.com', 'Email copied!')" class="hover:text-cyan-400 transition-colors">Copy Email</button>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2026 Omkar Angadi. All rights reserved. | Built with HTML5, CSS3 & JavaScript</p>
         </div>
     </footer>
 
-    <!-- Custom Script -->
-    <script src="script.js?v=8.0"></script>
+    <!-- Interactive Scripts -->
+    <script>
+        // 1. Typing Animation
+        const element = document.getElementById('typingElement');
+        if (element) {
+            const titles = [
+                "Embedded Systems Specialist",
+                "Verilog HDL & RISC-V RTL Developer",
+                "FPGA Hardware Accelerator",
+                "Custom PCB & IoT System Designer"
+            ];
+            let titleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typeSpeed = 80;
+
+            function type() {
+                const currentTitle = titles[titleIndex];
+                if (isDeleting) {
+                    element.textContent = currentTitle.substring(0, charIndex - 1);
+                    charIndex--;
+                    typeSpeed = 40;
+                } else {
+                    element.textContent = currentTitle.substring(0, charIndex + 1);
+                    charIndex++;
+                    typeSpeed = 85;
+                }
+
+                if (!isDeleting && charIndex === currentTitle.length) {
+                    typeSpeed = 2200;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    titleIndex = (titleIndex + 1) % titles.length;
+                    typeSpeed = 400;
+                }
+                setTimeout(type, typeSpeed);
+            }
+            type();
+        }
+
+        // 2. Tab Switcher
+        function switchTab(tab) {
+            const expBtn = document.getElementById('tabExpBtn');
+            const skillBtn = document.getElementById('tabSkillBtn');
+            const expContent = document.getElementById('tabExpContent');
+            const skillContent = document.getElementById('tabSkillContent');
+
+            if (tab === 'exp') {
+                expBtn.className = "px-6 py-3 font-semibold text-cyan-400 border-b-2 border-cyan-400 transition-all";
+                skillBtn.className = "px-6 py-3 font-semibold text-gray-400 border-b-2 border-transparent hover:text-white transition-all";
+                expContent.classList.remove('hidden');
+                skillContent.classList.add('hidden');
+            } else {
+                skillBtn.className = "px-6 py-3 font-semibold text-cyan-400 border-b-2 border-cyan-400 transition-all";
+                expBtn.className = "px-6 py-3 font-semibold text-gray-400 border-b-2 border-transparent hover:text-white transition-all";
+                skillContent.classList.remove('hidden');
+                expContent.classList.add('hidden');
+            }
+        }
+
+        // 3. Click to Copy Toast Notification
+        function copyToClipboard(text, message) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                const toastMsg = document.getElementById('toastMsg');
+                if (toast && toastMsg) {
+                    toastMsg.textContent = message;
+                    toast.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
+                    toast.classList.add('translate-y-0', 'opacity-100');
+                    setTimeout(() => {
+                        toast.classList.remove('translate-y-0', 'opacity-100');
+                        toast.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
+                    }, 3000);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
