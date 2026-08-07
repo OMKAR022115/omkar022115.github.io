@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omkar Angadi — Electronics & Communication Engineer</title>
-    <meta name="description" content="Apple/Linear-inspired dark engineering portfolio of Omkar Angadi — ECE Engineer specializing in Embedded Systems, Verilog HDL, RISC-V, FPGA Design, and Custom PCB Prototyping.">
-    <meta name="keywords" content="Omkar Angadi, Electronics Engineer, Verilog HDL, RISC-V, FPGA, Embedded Systems, C, Python, PCB Layout">
+    <title>Omkar Angadi — VLSI & Embedded Systems Engineer | FPGA & Verilog Specialist</title>
+    <meta name="description" content="Personal Portfolio of Omkar Angadi — Electronics & Communication Engineer specializing in VLSI, Embedded Systems, Verilog HDL, RISC-V, FPGA Acceleration, and Custom PCB Prototyping.">
+    <meta name="keywords" content="Omkar Angadi, VLSI Engineer, Embedded Systems, Verilog HDL, SystemVerilog, RISC-V, FPGA, Vivado, MATLAB, CNN on FPGA, OFDM, C, Python">
     <meta name="author" content="Omkar Angadi">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Omkar Angadi — VLSI & Embedded Systems Engineer">
+    <meta property="og:description" content="ECE Engineer specializing in FPGA Design, Verilog HDL, RISC-V Cores, and Embedded IoT Systems.">
+    <meta property="og:url" content="https://omkar022115.github.io/omkarangadi.github.io/">
+    <meta property="og:type" content="website">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Custom Configuration -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -19,19 +23,21 @@
                 extend: {
                     colors: {
                         dark: {
-                            950: '#030712',
-                            900: '#080d1a',
-                            800: '#0f172a',
-                            700: '#1e293b'
+                            950: '#09090B',
+                            900: '#121215',
+                            800: '#18181B',
+                            700: '#27272A'
                         },
-                        accent: {
-                            cyan: '#06b6d4',
-                            blue: '#3b82f6',
-                            glow: '#00f2fe'
+                        brand: {
+                            blue: '#3B82F6',
+                            cyan: '#06B6D4',
+                            emerald: '#10B981',
+                            glow: '#00F2FE'
                         }
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        sans: ['"Inter"', '"Poppins"', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace']
                     }
                 }
@@ -42,634 +48,973 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Linear Background & Glow Custom Utilities -->
-    <style>
-        body {
-            background-color: #030712;
-            color: #f3f4f6;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* Subtle linear grid pattern */
-        .bg-linear-grid {
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12) 0%, transparent 60%),
-                linear-gradient(rgba(31, 41, 55, 0.25) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(31, 41, 55, 0.25) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
-        }
-
-        /* Glassmorphism Hairline Card */
-        .linear-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(31, 41, 55, 0.8);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .linear-card:hover {
-            border-color: rgba(6, 182, 212, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
-            transform: translateY(-2px);
-        }
-
-        /* Terminal Cursor Blink */
-        .cursor-blink {
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
-    </style>
+    <!-- Custom System Styles -->
+    <link rel="stylesheet" href="styles.css?v=9.0">
 </head>
-<body class="bg-dark-950 text-gray-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+<body class="bg-[#09090B] text-slate-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-10 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-gray-900 border border-cyan-500/40 text-cyan-400 px-4 py-3 rounded-lg shadow-2xl backdrop-blur-xl text-sm font-medium">
-        <i class="fa-solid fa-circle-check"></i>
-        <span id="toastMsg">Email copied to clipboard!</span>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="fixed inset-0 z-50 bg-[#09090B] flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="relative flex items-center justify-center">
+            <div class="w-20 h-20 border-2 border-cyan-500/20 border-t-cyan-400 border-r-blue-500 rounded-full animate-spin"></div>
+            <div class="absolute font-mono text-xs text-cyan-400 font-bold">RTL</div>
+        </div>
+        <div class="mt-4 font-mono text-xs text-slate-400 tracking-widest uppercase">Initializing Core...</div>
     </div>
 
-    <!-- Minimalist Blur Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-40 bg-dark-950/70 backdrop-blur-md border-b border-gray-800/60">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <a href="#hero" class="flex items-center gap-2 text-sm font-semibold tracking-wide text-white hover:opacity-80 transition-opacity">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#06b6d4]"></span>
+    <!-- Scroll Progress Indicator Bar -->
+    <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 z-50 w-0 transition-all duration-150"></div>
+
+    <!-- Mouse Cursor Glow Spotlight Overlay -->
+    <div id="mouseGlow" class="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-transparent rounded-full blur-3xl z-30 transition-transform duration-100 ease-out"></div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-8 right-8 z-50 transform translate-y-10 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-zinc-900 border border-cyan-500/40 text-cyan-400 px-5 py-3.5 rounded-xl shadow-2xl backdrop-blur-xl text-sm font-medium">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMsg">Action completed successfully!</span>
+    </div>
+
+    <!-- Sticky Glass Navbar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-40 bg-[#09090B]/80 backdrop-blur-xl border-b border-zinc-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#hero" class="flex items-center gap-2.5 font-heading text-lg font-bold text-white hover:opacity-90 transition-opacity">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
                 <span>Omkar<span class="text-cyan-400">.Angadi</span></span>
+                <span class="hidden sm:inline-block font-mono text-[10px] px-2 py-0.5 rounded bg-zinc-800 text-slate-400 border border-zinc-700">ECE / VLSI</span>
             </a>
 
-            <!-- Desktop Links -->
-            <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-gray-400">
-                <a href="#hero" class="hover:text-cyan-400 transition-colors">Overview</a>
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-xs font-medium text-slate-400">
+                <a href="#hero" class="hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
                 <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
-                <a href="#experience-skills" class="hover:text-cyan-400 transition-colors">Experience & Skills</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
                 <a href="#education" class="hover:text-cyan-400 transition-colors">Education</a>
+                <a href="#certificates" class="hover:text-cyan-400 transition-colors">Certificates</a>
                 <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
             </nav>
 
-            <!-- Social Icon Badges & Action -->
-            <div class="flex items-center gap-2 sm:gap-3">
-                <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all" title="GitHub Profile">
+            <!-- Nav Actions & Icons -->
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all" title="GitHub Profile">
                     <i class="fa-brands fa-github text-sm"></i>
                 </a>
-                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all" title="LinkedIn Profile">
+                <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all" title="LinkedIn Profile">
                     <i class="fa-brands fa-linkedin-in text-sm"></i>
                 </a>
-                <button onclick="copyToClipboard('omkarangadi0221@gmail.com', 'Email address copied!')" class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all" title="Copy Email">
-                    <i class="fa-solid fa-envelope text-sm"></i>
-                </button>
-                <a href="#contact" class="hidden sm:inline-flex text-xs font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all">
-                    Get In Touch
+                <a href="#contact" class="hidden sm:inline-flex text-xs font-semibold px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 text-white hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all">
+                    Contact Me
                 </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-slate-300 hover:text-cyan-400">
+                    <i class="fa-solid fa-bars text-sm"></i>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileDrawer" class="hidden lg:hidden bg-zinc-950/95 border-b border-zinc-800 px-6 py-6 space-y-4 text-sm font-medium">
+            <a href="#hero" class="block text-slate-300 hover:text-cyan-400">Home</a>
+            <a href="#about" class="block text-slate-300 hover:text-cyan-400">About</a>
+            <a href="#skills" class="block text-slate-300 hover:text-cyan-400">Skills</a>
+            <a href="#projects" class="block text-slate-300 hover:text-cyan-400">Projects</a>
+            <a href="#experience" class="block text-slate-300 hover:text-cyan-400">Experience</a>
+            <a href="#education" class="block text-slate-300 hover:text-cyan-400">Education & Certificates</a>
+            <a href="#contact" class="block text-slate-300 hover:text-cyan-400">Contact</a>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="pt-24 pb-16 bg-linear-grid min-h-screen">
+    <!-- Main Content Grid -->
+    <main class="pt-24 pb-20">
         
-        <!-- ================= HERO SECTION ================= -->
-        <section id="hero" class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+        <!-- ================= 1. HERO SECTION ================= -->
+        <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-24 overflow-hidden">
             
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Background Floating Glow Blobs -->
+            <div class="absolute top-1/4 left-10 w-72 h-72 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+            <div class="absolute top-1/3 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
                 
-                <!-- Left Hero Text -->
+                <!-- Left Bio Intro -->
                 <div class="lg:col-span-7 space-y-6">
                     
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold tracking-wide">
-                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
                         Electronics & Communication Engineer
                     </div>
 
-                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                        Omkar Angadi
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-white tracking-tight leading-none">
+                        Omkar <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">Angadi</span>
                     </h1>
 
-                    <div class="text-lg sm:text-xl font-medium text-cyan-400 font-mono">
+                    <div class="text-lg sm:text-2xl font-mono font-medium text-cyan-400 min-h-[36px] flex items-center">
                         <span id="typingElement"></span><span class="cursor-blink">|</span>
                     </div>
 
-                    <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
-                        Specializing in <strong>Embedded Systems</strong>, <strong>Verilog HDL</strong>, <strong>RISC-V architecture</strong>, and <strong>FPGA Design</strong>. Proven expertise in digital verification (<span class="font-mono text-cyan-300">84% RTL coverage</span>), MATLAB hardware simulation (<span class="font-mono text-cyan-300">93% object accuracy</span>), and custom PCB layout.
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+                        Specializing in <strong>VLSI Architecture</strong>, <strong>Verilog / SystemVerilog HDL</strong>, <strong>RISC-V Processors</strong>, <strong>FPGA Acceleration</strong>, and <strong>Embedded Systems</strong>. Demonstrated success in RTL verification (<span class="font-mono text-cyan-300">84% Ethernet coverage</span>), MATLAB signal processing (<span class="font-mono text-cyan-300">93% object accuracy</span>), and custom PCB prototyping.
                     </p>
 
-                    <!-- CGPA & Stats Grid -->
-                    <div class="grid grid-cols-3 gap-4 pt-2 max-w-lg">
-                        <div class="linear-card p-4 rounded-xl text-center">
-                            <div class="text-2xl font-bold font-mono text-white">8.10</div>
-                            <div class="text-[11px] text-gray-400 font-medium uppercase tracking-wider mt-1">B.E. CGPA</div>
+                    <!-- Academic Metric Cards -->
+                    <div class="grid grid-cols-3 gap-4 pt-2 max-w-xl">
+                        <div class="glass-card p-4 rounded-2xl border-zinc-800 bg-zinc-900/60 text-center hover:border-cyan-500/40 transition-all">
+                            <div class="text-2xl sm:text-3xl font-bold font-mono text-white">8.10</div>
+                            <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-1">B.E. CGPA</div>
                         </div>
-                        <div class="linear-card p-4 rounded-xl text-center">
-                            <div class="text-2xl font-bold font-mono text-white">8.94</div>
-                            <div class="text-[11px] text-gray-400 font-medium uppercase tracking-wider mt-1">Diploma CGPA</div>
+                        <div class="glass-card p-4 rounded-2xl border-zinc-800 bg-zinc-900/60 text-center hover:border-cyan-500/40 transition-all">
+                            <div class="text-2xl sm:text-3xl font-bold font-mono text-white">8.94</div>
+                            <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-1">Diploma CGPA</div>
                         </div>
-                        <div class="linear-card p-4 rounded-xl text-center">
-                            <div class="text-2xl font-bold font-mono text-white">4</div>
-                            <div class="text-[11px] text-gray-400 font-medium uppercase tracking-wider mt-1">Internships</div>
+                        <div class="glass-card p-4 rounded-2xl border-zinc-800 bg-zinc-900/60 text-center hover:border-cyan-500/40 transition-all">
+                            <div class="text-2xl sm:text-3xl font-bold font-mono text-white">4</div>
+                            <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-1">Internships</div>
                         </div>
                     </div>
 
-                    <!-- Primary CTAs -->
+                    <!-- Action CTAs -->
                     <div class="flex flex-wrap items-center gap-4 pt-4">
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm border border-gray-700 hover:border-cyan-500/50 hover:text-cyan-400 shadow-lg hover:shadow-[0_0_20px_rgba(6,182,212,0.25)] transition-all">
+                        <button onclick="copyToClipboard('omkarangadi0221@gmail.com', 'Resume request & email copied!')" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 text-white font-semibold text-sm shadow-xl hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all">
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            <span>Download Resume</span>
+                        </button>
+
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-semibold text-sm border border-zinc-800 hover:border-cyan-500/50 hover:text-cyan-400 transition-all">
                             <i class="fa-brands fa-github text-base"></i>
                             <span>GitHub Profile</span>
                         </a>
-                        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 font-semibold text-sm border border-cyan-500/30 transition-all">
-                            <i class="fa-solid fa-code"></i>
-                            <span>Explore Projects</span>
-                        </a>
-                        <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="p-3 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-gray-700 transition-all" title="LinkedIn Profile">
-                            <i class="fa-brands fa-linkedin-in text-base"></i>
+
+                        <a href="#contact" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-zinc-900/60 hover:bg-zinc-900 text-slate-300 font-semibold text-sm border border-zinc-800 hover:border-cyan-500/30 transition-all">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Get In Touch</span>
                         </a>
                     </div>
 
                 </div>
 
-                <!-- Right Interactive Code Terminal Card -->
-                <div class="lg:col-span-5">
-                    <div class="linear-card rounded-xl overflow-hidden border-gray-800 shadow-2xl bg-gray-950/90">
-                        <div class="px-4 py-3 bg-gray-900/80 border-b border-gray-800 flex items-center justify-between">
-                            <div class="flex items-center gap-1.5">
-                                <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-                                <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-                                <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                <!-- Right Visual: Futuristic Microchip Avatar Showcase -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        
+                        <!-- Glowing Halo Ring -->
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 opacity-30 group-hover:opacity-75 blur-xl transition duration-500"></div>
+
+                        <!-- Main Chip Showcase Container -->
+                        <div class="relative glass-card rounded-3xl p-6 bg-zinc-900/90 border border-zinc-800 shadow-2xl max-w-md w-full">
+                            <div class="flex items-center justify-between mb-4 pb-3 border-b border-zinc-800">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-microchip text-cyan-400 text-lg"></i>
+                                    <span class="font-heading text-sm font-bold text-white">FPGA & RTL Core</span>
+                                </div>
+                                <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">LIVE SYNTHESIS</span>
                             </div>
-                            <span class="font-mono text-xs text-gray-400">riscv_core_top.v</span>
-                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">VERILOG_HDL</span>
+
+                            <!-- Hardware RTL Graphic Canvas -->
+                            <div class="bg-[#09090B] rounded-2xl p-5 border border-zinc-800 font-mono text-xs text-slate-300 space-y-2 overflow-hidden">
+                                <div class="text-slate-500">// Omkar Angadi — Hardware Architecture</div>
+                                <div><span class="text-blue-400">module</span> <span class="text-cyan-400">fpga_riscv_accelerator</span> (</div>
+                                <div class="pl-4"><span class="text-blue-400">input</span> <span class="text-purple-400">clk_100mhz</span>, <span class="text-purple-400">rst_n</span>,</div>
+                                <div class="pl-4"><span class="text-blue-400">output</span> [<span class="text-amber-400">31</span>:<span class="text-amber-400">0</span>] <span class="text-emerald-400">ethernet_packet</span></div>
+                                <div>);</div>
+                                <div class="pt-2 text-slate-400">// Metrics Validation</div>
+                                <div class="text-amber-400">assign <span class="text-slate-200">code_coverage</span> = <span class="text-cyan-300">84.0</span>;</div>
+                                <div class="text-amber-400">assign <span class="text-slate-200">detection_accuracy</span> = <span class="text-cyan-300">93.0</span>;</div>
+                                <div class="pt-2 flex items-center justify-between text-[11px] text-slate-400">
+                                    <span>Status: <span class="text-emerald-400 font-semibold">SYNTHESIS_OK</span></span>
+                                    <span>Vivado 2023.2</span>
+                                </div>
+                            </div>
+
+                            <!-- Hardware Badges -->
+                            <div class="mt-5 grid grid-cols-2 gap-2 text-center text-xs font-mono">
+                                <div class="p-2.5 rounded-xl bg-zinc-800/80 border border-zinc-700 text-slate-300">
+                                    <i class="fa-solid fa-bolt text-cyan-400 mr-1"></i> Xilinx FPGA
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-zinc-800/80 border border-zinc-700 text-slate-300">
+                                    <i class="fa-solid fa-code text-blue-400 mr-1"></i> SystemVerilog
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="p-4 font-mono text-xs leading-relaxed text-gray-300 overflow-x-auto">
-<pre><code><span class="text-gray-500">// Omkar Angadi — RTL Core Top</span>
-<span class="text-blue-400">module</span> <span class="text-cyan-400">riscv_ethernet_top</span> (
-    <span class="text-blue-400">input</span>  <span class="text-purple-400">wire</span> clk_50mhz,
-    <span class="text-blue-400">input</span>  <span class="text-purple-400">wire</span> rst_n,
-    <span class="text-blue-400">output</span> <span class="text-purple-400">wire</span> [31:0] tx_data
-);
-
-<span class="text-gray-500">// Metrics Verification</span>
-<span class="text-blue-400">parameter</span> COVERAGE = <span class="text-amber-400">84.0</span>;
-<span class="text-blue-400">parameter</span> ACCURACY = <span class="text-amber-400">93.0</span>;
-
-<span class="text-blue-400">always</span> @(<span class="text-blue-400">posedge</span> clk_50mhz) <span class="text-blue-400">begin</span>
-    <span class="text-blue-400">if</span> (!rst_n) status &lt;= <span class="text-emerald-400">"IDLE"</span>;
-    <span class="text-blue-400">else</span>       status &lt;= <span class="text-emerald-400">"VERIFIED"</span>;
-<span class="text-blue-400">end</span>
-<span class="text-blue-400">endmodule</span></code></pre>
-                        </div>
-
-                        <div class="px-4 py-2.5 bg-gray-900/60 border-t border-gray-800 text-[11px] font-mono text-gray-400 flex items-center justify-between">
-                            <span><span class="text-cyan-400">$</span> simulation --check</span>
-                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-check"></i> ModelSim Passed</span>
-                        </div>
                     </div>
                 </div>
 
             </div>
-
         </section>
 
 
-        <!-- ================= FEATURED PROJECTS SECTION ================= -->
-        <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+        <!-- ================= 2. ABOUT ME SECTION ================= -->
+        <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-zinc-800/80">
             
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">ENGINEERING PORTFOLIO</span>
-                    <h2 class="text-3xl font-extrabold text-white mt-1">Featured Projects</h2>
-                </div>
-                <p class="text-gray-400 text-sm max-w-md mt-2 md:mt-0">
-                    RTL cores, embedded microcontrollers, custom hardware PCBs, and algorithmic simulations.
-                </p>
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="font-mono text-xs text-cyan-400 tracking-widest uppercase font-semibold">PROFILE & DOMAIN EXPERTISE</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white">About Me</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
             </div>
 
-            <!-- Clean 2-Column Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 
-                <!-- Project 1: RISC-V Core -->
-                <div class="linear-card rounded-2xl p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">FPGA / RTL Design</span>
-                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">84% Code Coverage</span>
+                <!-- Detailed Bio Card -->
+                <div class="lg:col-span-7 glass-card p-8 rounded-3xl border-zinc-800 bg-zinc-900/60 space-y-6">
+                    <h3 class="text-2xl font-heading font-bold text-white">
+                        Electronics & Communication Engineering Student
+                    </h3>
+
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        I am an ECE undergraduate at <strong>S.D.M. College of Engineering and Technology (Dharwad)</strong> with a strong foundation in digital circuit design, VLSI architectures, and embedded system prototyping.
+                    </p>
+
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        My technical passions lie at the intersection of hardware and software—ranging from writing synthesizable <strong>Verilog / SystemVerilog RTL cores</strong> on FPGA platforms, running testbench simulations on <strong>ModelSim/QuestaSim</strong>, to programming real-time microcontrollers (ESP32, 8051) and layout design on custom PCBs.
+                    </p>
+
+                    <!-- Core Competencies Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-semibold text-cyan-400 flex items-center gap-2">
+                            <i class="fa-solid fa-microchip"></i> FPGA Acceleration
                         </div>
-
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
-                            Verilog RISC-V Core & Ethernet Integration
-                        </h3>
-
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                            Architected and verified a 32-bit Verilog HDL-based RISC-V processor core integrated with Ethernet protocol modules on FPGA target hardware. ModelSim & QuestaSim testbench verification.
-                        </p>
-                    </div>
-
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Verilog HDL</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">FPGA</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">RISC-V</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">ModelSim</span>
+                        <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-semibold text-blue-400 flex items-center gap-2">
+                            <i class="fa-solid fa-code font-mono"></i> RTL Verification
                         </div>
-
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-white transition-colors">
-                            <i class="fa-brands fa-github text-sm"></i>
-                            <span>View Code on GitHub</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </a>
+                        <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-semibold text-emerald-400 flex items-center gap-2">
+                            <i class="fa-solid fa-cpu"></i> RISC-V Processors
+                        </div>
+                        <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-semibold text-amber-400 flex items-center gap-2">
+                            <i class="fa-solid fa-wave-square"></i> MATLAB / Simulink
+                        </div>
+                        <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-semibold text-purple-400 flex items-center gap-2">
+                            <i class="fa-solid fa-gears"></i> Xilinx Vivado
+                        </div>
+                        <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-semibold text-rose-400 flex items-center gap-2">
+                            <i class="fa-solid fa-wifi"></i> Embedded IoT
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 2: FPGA Object Detection -->
-                <div class="linear-card rounded-2xl p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">MATLAB / RTL</span>
+                <!-- Academic Timeline Cards -->
+                <div class="lg:col-span-5 space-y-4">
+                    
+                    <div class="glass-card p-6 rounded-2xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-mono text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded border border-cyan-500/20">2027 Expected</span>
+                            <span class="font-mono text-sm font-bold text-white">CGPA: 8.10</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white">B.E. in Electronics & Communication</h4>
+                        <p class="text-xs text-slate-400 mt-1">S.D.M. College of Engineering & Technology, Dharwad</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-mono text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-500/20">2024 Distinction</span>
+                            <span class="font-mono text-sm font-bold text-white">CGPA: 8.94</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white">Diploma in Electronics & Communication</h4>
+                        <p class="text-xs text-slate-400 mt-1">JSS's K.H. Kabbur Institute of Engineering, Dharwad</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-mono text-xs text-slate-400 bg-zinc-800 px-2.5 py-0.5 rounded">2021 Completed</span>
+                            <span class="font-mono text-sm font-bold text-white">79.36%</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white">SSLC High School</h4>
+                        <p class="text-xs text-slate-400 mt-1">Basel Mission English Medium High School, Dharwad</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= 3. SKILLS SECTION ================= -->
+        <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-zinc-800/80">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="font-mono text-xs text-cyan-400 tracking-widest uppercase font-semibold">TECHNICAL MATRIX</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white">Skills & Technologies</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Categorized Animated Skills Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Category 1: Programming -->
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-white">Programming</h3>
+                            <span class="text-xs text-slate-400 font-mono">Software & Firmware</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>C / Embedded C</span>
+                                <span class="text-cyan-400">90%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full" style="width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>Python</span>
+                                <span class="text-cyan-400">80%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full" style="width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>HTML5 / CSS3</span>
+                                <span class="text-cyan-400">85%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: HDL & VLSI -->
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-white">HDL & VLSI</h3>
+                            <span class="text-xs text-slate-400 font-mono">Digital Logic & RTL</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>Verilog HDL</span>
+                                <span class="text-cyan-400">92%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-cyan-500 to-emerald-400 rounded-full" style="width: 92%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>SystemVerilog</span>
+                                <span class="text-cyan-400">78%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-cyan-500 to-emerald-400 rounded-full" style="width: 78%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>RTL Testbench Verification</span>
+                                <span class="text-cyan-400">84%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-cyan-500 to-emerald-400 rounded-full" style="width: 84%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: FPGA & Hardware -->
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-cpu"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-white">FPGA & MCU</h3>
+                            <span class="text-xs text-slate-400 font-mono">Hardware Interfacing</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>Xilinx / Altera FPGA</span>
+                                <span class="text-cyan-400">88%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full" style="width: 88%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>ESP32 & 8051 MCU</span>
+                                <span class="text-cyan-400">90%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full" style="width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                                <span>Custom PCB Soldering</span>
+                                <span class="text-cyan-400">82%</span>
+                            </div>
+                            <div class="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full" style="width: 82%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4: EDA Tools & Simulation -->
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-white">EDA Tools</h3>
+                            <span class="text-xs text-slate-400 font-mono">Simulation Suites</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-cyan-300 border border-zinc-800">ModelSim / QuestaSim</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-cyan-300 border border-zinc-800">MATLAB & Simulink</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-cyan-300 border border-zinc-800">Xilinx Vivado</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-cyan-300 border border-zinc-800">Proteus & Multisim</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-cyan-300 border border-zinc-800">DipTrace PCB</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-cyan-300 border border-zinc-800">Arduino IDE</span>
+                    </div>
+                </div>
+
+                <!-- Category 5: Protocols & Interfaces -->
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-white">Protocols</h3>
+                            <span class="text-xs text-slate-400 font-mono">Hardware Buses</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-slate-200 border border-zinc-800">UART</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-slate-200 border border-zinc-800">SPI</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-slate-200 border border-zinc-800">I2C</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-slate-200 border border-zinc-800">Ethernet MII/RMII</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-slate-200 border border-zinc-800">OSI & Subnetting</span>
+                    </div>
+                </div>
+
+                <!-- Category 6: AI & Signal Processing -->
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-white">AI & Hardware DSP</h3>
+                            <span class="text-xs text-slate-400 font-mono">Acceleration</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-rose-300 border border-zinc-800">CNN on FPGA</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-rose-300 border border-zinc-800">OFDM Communications</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-rose-300 border border-zinc-800">Object Detection</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-zinc-900 text-rose-300 border border-zinc-800">Signal Conditioning</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= 4. PROJECTS SECTION ================= -->
+        <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-zinc-800/80">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="font-mono text-xs text-cyan-400 tracking-widest uppercase font-semibold">VLSI & EMBEDDED SHOWCASE</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white">Featured Engineering Projects</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Project Category Filter Bar -->
+            <div class="flex justify-center gap-2 mb-12 flex-wrap text-xs font-mono">
+                <button onclick="filterProjects('all')" class="project-filter-btn active px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-slate-300 hover:text-cyan-400 transition-all">All Projects</button>
+                <button onclick="filterProjects('fpga')" class="project-filter-btn px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-slate-300 hover:text-cyan-400 transition-all">FPGA & Verilog</button>
+                <button onclick="filterProjects('ai')" class="project-filter-btn px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-slate-300 hover:text-cyan-400 transition-all">AI & DSP</button>
+                <button onclick="filterProjects('embedded')" class="project-filter-btn px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-slate-300 hover:text-cyan-400 transition-all">Embedded & IoT</button>
+            </div>
+
+            <!-- Featured Projects Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1: FPGA Moving Object Detection -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden border-zinc-800 bg-zinc-900/60 flex flex-col justify-between hover:border-cyan-500/50 transition-all group" data-category="fpga ai">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">MATLAB / RTL</span>
                             <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">93% Accuracy</span>
                         </div>
 
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
-                            FPGA Hardware Object Detection Pipeline
+                        <h3 class="font-heading text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                            FPGA Moving Object Detection
                         </h3>
 
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                            Developing an optimized hardware object detection system. Utilizes MATLAB & Simulink for algorithm verification and RTL resource optimization (achieving 93% accuracy & 78% precision).
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Developing an optimized FPGA hardware object detection pipeline using MATLAB/Simulink for algorithm verification and RTL resource optimization (achieving 93% accuracy & 78% precision).
                         </p>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">MATLAB</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Simulink</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">FPGA RTL</span>
+                        </div>
                     </div>
 
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">MATLAB</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Simulink</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">FPGA RTL</span>
-                        </div>
-
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-white transition-colors">
-                            <i class="fa-brands fa-github text-sm"></i>
-                            <span>View Code on GitHub</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    <div class="px-6 py-4 bg-zinc-950/60 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="text-xs font-semibold text-cyan-400 hover:text-white flex items-center gap-2">
+                            <i class="fa-brands fa-github"></i> GitHub Code
                         </a>
+                        <span class="text-xs font-mono text-slate-500">Vivado 2023</span>
                     </div>
                 </div>
 
-                <!-- Project 3: Women's Safety System -->
-                <div class="linear-card rounded-2xl p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">IoT & Mobile</span>
-                            <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-1 rounded-full border border-gray-800">20+ Locations Tested</span>
+                <!-- Project 2: OFDM Image Communication using FPGA -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden border-zinc-800 bg-zinc-900/60 flex flex-col justify-between hover:border-cyan-500/50 transition-all group" data-category="fpga ai">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">VLSI / DSP</span>
+                            <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/20">OFDM Modulator</span>
                         </div>
 
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
-                            Women's Safety Alert System
+                        <h3 class="font-heading text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                            OFDM Image Communication on FPGA
                         </h3>
 
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                            Built an emergency alert system that shares user live location telemetry instantly. Tested across 20 locations and 30 active accounts with reliable Android/Web synchronization.
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Implemented Orthogonal Frequency Division Multiplexing (OFDM) transceiver hardware pipeline on FPGA for high-rate wireless image transmission and BER channel simulation.
                         </p>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Verilog HDL</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">FFT / IFFT</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">FPGA DSP</span>
+                        </div>
                     </div>
 
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Android Studio</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Node.js</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">HTML/CSS</span>
-                        </div>
-
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-white transition-colors">
-                            <i class="fa-brands fa-github text-sm"></i>
-                            <span>View Code on GitHub</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    <div class="px-6 py-4 bg-zinc-950/60 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="text-xs font-semibold text-cyan-400 hover:text-white flex items-center gap-2">
+                            <i class="fa-brands fa-github"></i> GitHub Code
                         </a>
+                        <span class="text-xs font-mono text-slate-500">ModelSim</span>
                     </div>
                 </div>
 
-                <!-- Project 4: IR Based Radar -->
-                <div class="linear-card rounded-2xl p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">Hardware / Custom PCB</span>
-                            <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-1 rounded-full border border-gray-800">360° Continuous Scan</span>
+                <!-- Project 3: CNN Hardware Accelerator on FPGA -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden border-zinc-800 bg-zinc-900/60 flex flex-col justify-between hover:border-cyan-500/50 transition-all group" data-category="fpga ai">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/30">AI Acceleration</span>
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">Parallel MAC</span>
                         </div>
 
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
+                        <h3 class="font-heading text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                            CNN Hardware Accelerator on FPGA
+                        </h3>
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Designed parallel Multiply-Accumulate (MAC) array blocks in Verilog HDL for accelerating Convolutional Neural Network (CNN) feature map inference on FPGA hardware.
+                        </p>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Verilog HDL</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">MAC Arrays</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Fixed-Point</span>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 bg-zinc-950/60 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="text-xs font-semibold text-cyan-400 hover:text-white flex items-center gap-2">
+                            <i class="fa-brands fa-github"></i> GitHub Code
+                        </a>
+                        <span class="text-xs font-mono text-slate-500">FPGA RTL</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: RISC-V Processor Core -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden border-zinc-800 bg-zinc-900/60 flex flex-col justify-between hover:border-cyan-500/50 transition-all group" data-category="fpga">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">RISC-V / Ethernet</span>
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">84% Code Coverage</span>
+                        </div>
+
+                        <h3 class="font-heading text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                            RISC-V 32-Bit Processor Core
+                        </h3>
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Built and verified a 32-bit Verilog HDL-based RISC-V processor integrated with Ethernet hardware protocol module on FPGA platform with 84% testbench coverage.
+                        </p>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Verilog HDL</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Ethernet</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">ModelSim</span>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 bg-zinc-950/60 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="text-xs font-semibold text-cyan-400 hover:text-white flex items-center gap-2">
+                            <i class="fa-brands fa-github"></i> GitHub Code
+                        </a>
+                        <span class="text-xs font-mono text-slate-500">RTL Verification</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: Women Safety Portal (Akkapade) -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden border-zinc-800 bg-zinc-900/60 flex flex-col justify-between hover:border-cyan-500/50 transition-all group" data-category="embedded">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">IoT & Mobile</span>
+                            <span class="text-xs font-mono text-slate-400 bg-zinc-800 px-2.5 py-1 rounded-full border border-zinc-700">20+ Locations Tested</span>
+                        </div>
+
+                        <h3 class="font-heading text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                            Women Safety Portal (Akkapade)
+                        </h3>
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Built an emergency alert system that shares user live location telemetry instantly via SMS and web endpoints, tested across 20 locations and 30 accounts.
+                        </p>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Android Studio</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Node.js</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">GPS Telemetry</span>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 bg-zinc-950/60 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="text-xs font-semibold text-cyan-400 hover:text-white flex items-center gap-2">
+                            <i class="fa-brands fa-github"></i> GitHub Code
+                        </a>
+                        <span class="text-xs font-mono text-slate-500">IoT Web</span>
+                    </div>
+                </div>
+
+                <!-- Project 6: IR Based 360° Radar Prototype -->
+                <div class="project-card glass-card rounded-3xl overflow-hidden border-zinc-800 bg-zinc-900/60 flex flex-col justify-between hover:border-cyan-500/50 transition-all group" data-category="embedded">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">Custom PCB Hardware</span>
+                            <span class="text-xs font-mono text-slate-400 bg-zinc-800 px-2.5 py-1 rounded-full border border-zinc-700">360° Continuous</span>
+                        </div>
+
+                        <h3 class="font-heading text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
                             IR Based 360° Radar Prototype
                         </h3>
 
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                            Engineered an IR-based radar prototype for real-time target proximity detection and perimeter intrusion monitoring on a custom-etched & soldered PCB with LM324 op-amps.
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Autonomous IR-based radar mechanism for real-time target proximity detection and perimeter intrusion monitoring on a custom-etched & soldered PCB with LM324.
                         </p>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Custom PCB</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">IR Sensor</span>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">LM324 Op-Amp</span>
+                        </div>
                     </div>
 
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">Custom PCB</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">IR Sensors</span>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-gray-900 text-gray-300 border border-gray-800">LM324</span>
-                        </div>
-
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-white transition-colors">
-                            <i class="fa-brands fa-github text-sm"></i>
-                            <span>View Code on GitHub</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    <div class="px-6 py-4 bg-zinc-950/60 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="text-xs font-semibold text-cyan-400 hover:text-white flex items-center gap-2">
+                            <i class="fa-brands fa-github"></i> GitHub Code
                         </a>
+                        <span class="text-xs font-mono text-slate-500">Hardware</span>
                     </div>
                 </div>
 
             </div>
-
         </section>
 
 
-        <!-- ================= EXPERIENCE & SKILLS (TABBED SWITCHER) ================= -->
-        <section id="experience-skills" class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+        <!-- ================= 5. EXPERIENCE & EDUCATION TIMELINE ================= -->
+        <section id="experience" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-zinc-800/80">
             
-            <div class="mb-10">
-                <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">CAREER & CAPABILITIES</span>
-                <h2 class="text-3xl font-extrabold text-white mt-1">Experience & Skills Breakdown</h2>
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="font-mono text-xs text-cyan-400 tracking-widest uppercase font-semibold">CAREER TRAJECTORY</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white">Work Experience & Internships</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
             </div>
 
-            <!-- Minimalist Tab Bar -->
-            <div class="flex border-b border-gray-800 mb-8 font-mono text-sm">
-                <button id="tabExpBtn" onclick="switchTab('exp')" class="px-6 py-3 font-semibold text-cyan-400 border-b-2 border-cyan-400 transition-all">
-                    <i class="fa-solid fa-briefcase mr-2"></i>Work Experience
-                </button>
-                <button id="tabSkillBtn" onclick="switchTab('skill')" class="px-6 py-3 font-semibold text-gray-400 border-b-2 border-transparent hover:text-white transition-all">
-                    <i class="fa-solid fa-layer-group mr-2"></i>Technical Skills Matrix
-                </button>
-            </div>
-
-            <!-- Tab 1: Work Experience Timeline -->
-            <div id="tabExpContent" class="space-y-6">
+            <!-- Timeline Container -->
+            <div class="max-w-4xl mx-auto space-y-8">
                 
-                <!-- Experience 1 -->
-                <div class="linear-card rounded-xl p-6">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <!-- Experience 1: Crofting Tech -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                         <div>
-                            <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded border border-cyan-500/30">Current Role</span>
-                            <h3 class="text-lg font-bold text-white mt-1">Summer Engineering Intern</h3>
-                            <div class="text-sm text-gray-400 font-medium"><i class="fa-solid fa-building mr-1"></i> Crofting Technologies</div>
+                            <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/30">Current Role</span>
+                            <h3 class="font-heading text-xl font-bold text-white mt-2">Summer Engineering Intern</h3>
+                            <h4 class="text-sm font-semibold text-cyan-400"><i class="fa-solid fa-building mr-1"></i> Crofting Technologies</h4>
                         </div>
-                        <span class="text-xs font-mono text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-800">June 2024 – Present</span>
+                        <span class="text-xs font-mono text-slate-400 bg-zinc-800 px-3.5 py-1.5 rounded-xl border border-zinc-700 self-start sm:self-auto">June 2024 – Present</span>
                     </div>
-                    <ul class="text-sm text-gray-300 space-y-2 list-disc list-inside mb-4">
-                        <li>Built and verified a <strong>Verilog HDL-based RISC-V core</strong> integrated with Ethernet modules on FPGA.</li>
-                        <li>Achieved <strong>84% code coverage</strong> on ModelSim / QuestaSim verification suite.</li>
-                        <li>Developing an <strong>FPGA object detection system</strong> using MATLAB/Simulink (<span class="font-mono text-cyan-300">93% detection accuracy</span>).</li>
+
+                    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside mb-4">
+                        <li>Built and validated a <strong>Verilog HDL-based RISC-V processor core</strong> integrated with Ethernet modules on FPGA target hardware.</li>
+                        <li>Achieved <strong>84% code coverage</strong> during testbench simulation on <strong>ModelSim / QuestaSim</strong>.</li>
+                        <li>Developing an <strong>FPGA object detection pipeline</strong> using MATLAB/Simulink for algorithm validation and RTL optimization (<span class="font-mono text-cyan-300">93% detection accuracy</span>).</li>
                     </ul>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-cyan-400 border border-gray-800">Verilog HDL</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-cyan-400 border border-gray-800">FPGA</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-cyan-400 border border-gray-800">RISC-V</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-cyan-400 border border-gray-800">ModelSim</span>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-cyan-300 border border-zinc-700">Verilog HDL</span>
+                        <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-cyan-300 border border-zinc-700">FPGA</span>
+                        <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-cyan-300 border border-zinc-700">RISC-V</span>
+                        <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-cyan-300 border border-zinc-700">ModelSim</span>
                     </div>
                 </div>
 
-                <!-- Experience 2 -->
-                <div class="linear-card rounded-xl p-6">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <!-- Experience 2: TATA Motors -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                         <div>
-                            <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-0.5 rounded border border-gray-800">Industry</span>
-                            <h3 class="text-lg font-bold text-white mt-1">Quality Inspector</h3>
-                            <div class="text-sm text-gray-400 font-medium"><i class="fa-solid fa-industry mr-1"></i> TATA Motors</div>
+                            <span class="text-xs font-mono text-slate-400 bg-zinc-800 px-3 py-1 rounded-full border border-zinc-700">Industry Role</span>
+                            <h3 class="font-heading text-xl font-bold text-white mt-2">Quality Inspector</h3>
+                            <h4 class="text-sm font-semibold text-slate-300"><i class="fa-solid fa-industry mr-1"></i> TATA Motors</h4>
                         </div>
-                        <span class="text-xs font-mono text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-800">Nov 2023 – Mar 2024</span>
+                        <span class="text-xs font-mono text-slate-400 bg-zinc-800 px-3.5 py-1.5 rounded-xl border border-zinc-700 self-start sm:self-auto">Nov 2023 – Mar 2024</span>
                     </div>
-                    <p class="text-sm text-gray-300 mb-3">Executed component quality inspection, tolerance checks, assembly line validation, and test record maintenance.</p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-gray-300 border border-gray-800">Quality Control</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-gray-900 text-gray-300 border border-gray-800">Assembly Inspection</span>
+
+                    <p class="text-sm text-slate-300 mb-4">
+                        Executed component tolerance verification, assembly line inspection procedures, quality control metrics logging, and non-conformance test reporting.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Quality Control</span>
+                        <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-zinc-800 text-slate-300 border border-zinc-700">Assembly Line</span>
                     </div>
                 </div>
 
                 <!-- Experience 3 & 4 Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="linear-card rounded-xl p-5">
-                        <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-0.5 rounded border border-gray-800">Internship</span>
-                        <h3 class="text-base font-bold text-white mt-1">Networking Intern</h3>
-                        <div class="text-xs text-cyan-400 font-medium mb-2">Wisne (Hubli) | Feb 2023</div>
-                        <p class="text-xs text-gray-400">Hands-on computer networking, OSI protocols, IP subnetting, and router setup.</p>
+                    <div class="glass-card p-6 rounded-2xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all">
+                        <span class="text-xs font-mono text-slate-400 bg-zinc-800 px-2.5 py-1 rounded-full">Internship</span>
+                        <h3 class="font-heading text-lg font-bold text-white mt-2">Networking Intern</h3>
+                        <div class="text-xs text-cyan-400 font-mono mb-2">Wisne (Hubli) | Feb 2023</div>
+                        <p class="text-xs text-slate-400">Computer networking architecture, OSI model, routing protocols, and switch configuration.</p>
                     </div>
 
-                    <div class="linear-card rounded-xl p-5">
-                        <span class="text-xs font-mono text-gray-400 bg-gray-900 px-2.5 py-0.5 rounded border border-gray-800">Internship</span>
-                        <h3 class="text-base font-bold text-white mt-1">Python Programming Intern</h3>
-                        <div class="text-xs text-cyan-400 font-medium mb-2">Amba Softwares | Sep 2022</div>
-                        <p class="text-xs text-gray-400">Python OOP fundamentals, algorithm design, data structures, and script automation.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Tab 2: Technical Skills Matrix -->
-            <div id="tabSkillContent" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <div class="linear-card rounded-xl p-6">
-                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-code text-cyan-400"></i> Programming Languages
-                    </h3>
-                    <div class="space-y-3 font-mono text-xs">
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
-                            <span class="text-gray-200">Verilog HDL</span>
-                            <span class="text-cyan-400">Advanced / RTL</span>
-                        </div>
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
-                            <span class="text-gray-200">C Programming</span>
-                            <span class="text-cyan-400">Proficient / Embedded</span>
-                        </div>
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
-                            <span class="text-gray-200">Python</span>
-                            <span class="text-cyan-400">Intermediate</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-200">Assembly (8051)</span>
-                            <span class="text-cyan-400">Foundational</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="linear-card rounded-xl p-6">
-                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-microchip text-cyan-400"></i> Hardware & Microcontrollers
-                    </h3>
-                    <div class="space-y-3 font-mono text-xs">
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
-                            <span class="text-gray-200">FPGA Boards</span>
-                            <span class="text-cyan-400">Xilinx / Altera</span>
-                        </div>
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
-                            <span class="text-gray-200">ESP32 & ESP8266</span>
-                            <span class="text-cyan-400">Advanced IoT</span>
-                        </div>
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-800">
-                            <span class="text-gray-200">8051 & Arduino</span>
-                            <span class="text-cyan-400">Interfacing</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-200">Custom PCB Layout</span>
-                            <span class="text-cyan-400">Hand Soldering</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="linear-card rounded-xl p-6">
-                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-laptop-code text-cyan-400"></i> EDA Tools & Simulation
-                    </h3>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono">
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">ModelSim / QuestaSim</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">MATLAB & Simulink</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">Proteus</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">Multisim</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">DipTrace</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-cyan-300 border border-gray-800">Arduino IDE</span>
-                    </div>
-                </div>
-
-                <div class="linear-card rounded-xl p-6">
-                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-network-wired text-cyan-400"></i> Protocols & Verification
-                    </h3>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono">
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">UART</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">SPI</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">I2C</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">Ethernet Protocol</span>
-                        <span class="px-3 py-1.5 rounded bg-gray-900 text-gray-300 border border-gray-800">RTL Testbenches</span>
+                    <div class="glass-card p-6 rounded-2xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all">
+                        <span class="text-xs font-mono text-slate-400 bg-zinc-800 px-2.5 py-1 rounded-full">Internship</span>
+                        <h3 class="font-heading text-lg font-bold text-white mt-2">Python Programming Intern</h3>
+                        <div class="text-xs text-cyan-400 font-mono mb-2">Amba Softwares | Sep 2022</div>
+                        <p class="text-xs text-slate-400">Core Python OOP, algorithm design, data structures, and script automation.</p>
                     </div>
                 </div>
 
             </div>
-
         </section>
 
 
-        <!-- ================= EDUCATION & CERTIFICATIONS ================= -->
-        <section id="education" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 border-t border-gray-800/60">
+        <!-- ================= 6. CERTIFICATES SECTION ================= -->
+        <section id="certificates" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-zinc-800/80">
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="font-mono text-xs text-cyan-400 tracking-widest uppercase font-semibold">VERIFIED CREDENTIALS</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white">Certifications</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Academic Credentials -->
-                <div>
-                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">ACADEMICS</span>
-                    <h2 class="text-2xl font-extrabold text-white mt-1 mb-6">Education Credentials</h2>
-
-                    <div class="space-y-4">
-                        <div class="linear-card p-5 rounded-xl">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-base font-bold text-white">B.E. in Electronics & Communication</h3>
-                                <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded border border-cyan-500/30">CGPA: 8.10</span>
-                            </div>
-                            <div class="text-xs text-gray-400 mb-1"><i class="fa-solid fa-university mr-1"></i> S.D.M. College of Engineering & Tech, Dharwad</div>
-                            <div class="text-xs text-gray-500 font-mono">2027 Expected • Focusing on Digital System Design & VLSI</div>
-                        </div>
-
-                        <div class="linear-card p-5 rounded-xl">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-base font-bold text-white">Diploma in ECE</h3>
-                                <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded border border-cyan-500/30">CGPA: 8.94</span>
-                            </div>
-                            <div class="text-xs text-gray-400 mb-1"><i class="fa-solid fa-school mr-1"></i> JSS K.H. Kabbur Institute of Engineering, Dharwad</div>
-                            <div class="text-xs text-gray-500 font-mono">2024 Completed • Distinction</div>
-                        </div>
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-white mb-1">Fundamentals of IoT Security</h3>
+                        <p class="text-xs text-slate-400 font-mono">MindLuster | <span class="text-cyan-400">Cert No: 8498362673</span></p>
                     </div>
                 </div>
 
-                <!-- Certifications -->
-                <div>
-                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">CREDENTIALS</span>
-                    <h2 class="text-2xl font-extrabold text-white mt-1 mb-6">Certifications</h2>
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-white mb-1">Python Programming Internship</h3>
+                        <p class="text-xs text-slate-400 font-mono">Amba Softwares (Offline)</p>
+                    </div>
+                </div>
 
-                    <div class="space-y-3">
-                        <div class="linear-card p-4 rounded-lg flex items-center gap-3">
-                            <div class="w-8 h-8 rounded bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fa-solid fa-shield-virus"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-white">Fundamentals of IoT Security</h4>
-                                <p class="text-xs text-gray-400 font-mono">MindLuster | Cert No: 8498362673</p>
-                            </div>
-                        </div>
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-white mb-1">C Programming Certification</h3>
+                        <p class="text-xs text-slate-400 font-mono">Amba Softwares</p>
+                    </div>
+                </div>
 
-                        <div class="linear-card p-4 rounded-lg flex items-center gap-3">
-                            <div class="w-8 h-8 rounded bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fa-brands fa-python"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-white">Python Programming Internship</h4>
-                                <p class="text-xs text-gray-400 font-mono">Amba Softwares (Offline)</p>
-                            </div>
-                        </div>
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-white mb-1">Computer Networking Systems</h3>
+                        <p class="text-xs text-slate-400 font-mono">Wisne Technologies</p>
+                    </div>
+                </div>
 
-                        <div class="linear-card p-4 rounded-lg flex items-center gap-3">
-                            <div class="w-8 h-8 rounded bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0 text-sm">
-                                <i class="fa-solid fa-code"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-white">C Programming Certification</h4>
-                                <p class="text-xs text-gray-400 font-mono">Amba Softwares</p>
-                            </div>
-                        </div>
+                <div class="glass-card p-6 rounded-3xl border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/40 transition-all flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-white mb-1">IoT Edge Computing & Analytics</h3>
+                        <p class="text-xs text-slate-400 font-mono">Embedded Systems Specialization</p>
                     </div>
                 </div>
 
             </div>
-
         </section>
 
 
-        <!-- ================= CONTACT & FOOTER SECTION ================= -->
-        <section id="contact" class="max-w-6xl mx-auto px-4 sm:px-6 pt-16">
+        <!-- ================= 7. CONTACT SECTION ================= -->
+        <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-zinc-800/80">
             
-            <div class="linear-card rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden bg-gradient-to-b from-gray-900/80 to-gray-950">
-                <div class="max-w-2xl mx-auto space-y-6">
-                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase font-semibold">GET IN TOUCH</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Build Engineering Solutions</h2>
-                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
-                        Open for embedded systems development, Verilog HDL verification, FPGA hardware design, and engineering collaborations.
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <!-- Contact Direct Info -->
+                <div class="lg:col-span-5 glass-card p-8 rounded-3xl border-zinc-800 bg-zinc-900/60 space-y-6">
+                    <span class="font-mono text-xs text-cyan-400 tracking-widest uppercase font-semibold">GET IN TOUCH</span>
+                    <h2 class="text-3xl font-heading font-extrabold text-white">Let's Discuss Opportunities</h2>
+                    
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Whether you have questions about VLSI design, Verilog verification, FPGA projects, or engineering roles—feel free to reach out directly!
                     </p>
 
-                    <!-- Contact Actions -->
-                    <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-                        <button onclick="copyToClipboard('omkarangadi0221@gmail.com', 'Email copied to clipboard!')" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold text-sm hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all">
-                            <i class="fa-regular fa-copy"></i>
-                            <span>Copy Email Address</span>
-                        </button>
+                    <div class="space-y-4 pt-2">
+                        
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-900 border border-zinc-800">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="text-[10px] font-mono text-slate-500 uppercase">Email Address</div>
+                                <a href="mailto:omkarangadi0221@gmail.com" class="text-xs font-mono text-white hover:text-cyan-400">omkarangadi0221@gmail.com</a>
+                            </div>
+                            <button onclick="copyToClipboard('omkarangadi0221@gmail.com', 'Email copied!')" class="p-2 text-slate-400 hover:text-cyan-400" title="Copy Email">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
 
-                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm border border-gray-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-all">
-                            <i class="fa-brands fa-github text-base"></i>
-                            <span>GitHub Profile</span>
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-900 border border-zinc-800">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="text-[10px] font-mono text-slate-500 uppercase">Phone Number</div>
+                                <a href="tel:+916366078873" class="text-xs font-mono text-white hover:text-cyan-400">+91 6366078873</a>
+                            </div>
+                            <button onclick="copyToClipboard('+916366078873', 'Phone number copied!')" class="p-2 text-slate-400 hover:text-cyan-400" title="Copy Phone">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-900 border border-zinc-800">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-[10px] font-mono text-slate-500 uppercase">Location</div>
+                                <div class="text-xs font-mono text-white">Dharwad, Karnataka, India</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="flex gap-3 pt-2">
+                        <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="flex-1 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-semibold text-xs text-center border border-zinc-800 hover:border-cyan-500/40 transition-all">
+                            <i class="fa-brands fa-github mr-1"></i> GitHub
                         </a>
-
-                        <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm border border-gray-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-all">
-                            <i class="fa-brands fa-linkedin-in text-base"></i>
-                            <span>LinkedIn</span>
+                        <a href="https://linkedin.com/in/omkarangadi" target="_blank" rel="noopener" class="flex-1 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-semibold text-xs text-center border border-zinc-800 hover:border-cyan-500/40 transition-all">
+                            <i class="fa-brands fa-linkedin-in mr-1"></i> LinkedIn
                         </a>
                     </div>
                 </div>
-            </div>
 
+                <!-- Contact Interactive Form -->
+                <div class="lg:col-span-7 glass-card p-8 rounded-3xl border-zinc-800 bg-zinc-900/60">
+                    <h3 class="text-xl font-heading font-bold text-white mb-6">Send a Direct Message</h3>
+                    
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-xs font-mono text-slate-400 mb-1">Your Name</label>
+                                <input type="text" id="name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:border-cyan-500 focus:outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-mono text-slate-400 mb-1">Your Email</label>
+                                <input type="email" id="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:border-cyan-500 focus:outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-xs font-mono text-slate-400 mb-1">Subject</label>
+                            <input type="text" id="subject" placeholder="Engineering Opportunity / Inquiry" class="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:border-cyan-500 focus:outline-none transition-all">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-mono text-slate-400 mb-1">Message</label>
+                            <textarea id="message" rows="4" required placeholder="Hello Omkar, I would like to discuss..." class="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:border-cyan-500 focus:outline-none transition-all"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 text-white font-semibold text-xs shadow-lg hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-800/80 bg-gray-950 py-8 text-center text-xs text-gray-500 font-mono">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- Back To Top Button -->
+    <button id="backToTop" class="fixed bottom-8 left-8 z-40 w-12 h-12 rounded-full bg-zinc-900 border border-cyan-500/40 text-cyan-400 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-cyan-500 hover:text-black shadow-2xl" title="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Minimal Footer -->
+    <footer class="border-t border-zinc-800/80 bg-[#09090B] py-8 text-center text-xs text-slate-500 font-mono">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-                © 2026 Omkar Angadi — Electronics & Communication Engineer
+                © 2026 Omkar Angadi — VLSI & Embedded Systems Engineer
             </div>
             <div class="flex items-center gap-6">
                 <a href="https://github.com/omkar022115" target="_blank" rel="noopener" class="hover:text-cyan-400 transition-colors">GitHub</a>
@@ -679,83 +1024,7 @@
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
-    <script>
-        // 1. Typing Animation
-        const element = document.getElementById('typingElement');
-        if (element) {
-            const titles = [
-                "Embedded Systems Specialist",
-                "Verilog HDL & RISC-V RTL Developer",
-                "FPGA Hardware Accelerator",
-                "Custom PCB & IoT System Designer"
-            ];
-            let titleIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typeSpeed = 80;
-
-            function type() {
-                const currentTitle = titles[titleIndex];
-                if (isDeleting) {
-                    element.textContent = currentTitle.substring(0, charIndex - 1);
-                    charIndex--;
-                    typeSpeed = 40;
-                } else {
-                    element.textContent = currentTitle.substring(0, charIndex + 1);
-                    charIndex++;
-                    typeSpeed = 85;
-                }
-
-                if (!isDeleting && charIndex === currentTitle.length) {
-                    typeSpeed = 2200;
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    titleIndex = (titleIndex + 1) % titles.length;
-                    typeSpeed = 400;
-                }
-                setTimeout(type, typeSpeed);
-            }
-            type();
-        }
-
-        // 2. Tab Switcher
-        function switchTab(tab) {
-            const expBtn = document.getElementById('tabExpBtn');
-            const skillBtn = document.getElementById('tabSkillBtn');
-            const expContent = document.getElementById('tabExpContent');
-            const skillContent = document.getElementById('tabSkillContent');
-
-            if (tab === 'exp') {
-                expBtn.className = "px-6 py-3 font-semibold text-cyan-400 border-b-2 border-cyan-400 transition-all";
-                skillBtn.className = "px-6 py-3 font-semibold text-gray-400 border-b-2 border-transparent hover:text-white transition-all";
-                expContent.classList.remove('hidden');
-                skillContent.classList.add('hidden');
-            } else {
-                skillBtn.className = "px-6 py-3 font-semibold text-cyan-400 border-b-2 border-cyan-400 transition-all";
-                expBtn.className = "px-6 py-3 font-semibold text-gray-400 border-b-2 border-transparent hover:text-white transition-all";
-                skillContent.classList.remove('hidden');
-                expContent.classList.add('hidden');
-            }
-        }
-
-        // 3. Click to Copy Toast Notification
-        function copyToClipboard(text, message) {
-            navigator.clipboard.writeText(text).then(() => {
-                const toast = document.getElementById('toast');
-                const toastMsg = document.getElementById('toastMsg');
-                if (toast && toastMsg) {
-                    toastMsg.textContent = message;
-                    toast.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
-                    toast.classList.add('translate-y-0', 'opacity-100');
-                    setTimeout(() => {
-                        toast.classList.remove('translate-y-0', 'opacity-100');
-                        toast.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
-                    }, 3000);
-                }
-            });
-        }
-    </script>
+    <!-- Modular Script -->
+    <script src="script.js?v=9.0"></script>
 </body>
 </html>
