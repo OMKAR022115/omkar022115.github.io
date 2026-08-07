@@ -1,145 +1,27 @@
 /* ==========================================================================
-   Omkar Angadi Portfolio - JavaScript Logic
+   OMKAR ANGADI PORTFOLIO - JAVASCRIPT CONTROLLER
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Circuit Background Canvas Animation
+    // 1. Initialize Circuit Background Canvas
     initCircuitCanvas();
 
-    // 2. Mobile Menu Toggle
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.className = 'fa-solid fa-xmark';
-            } else {
-                icon.className = 'fa-solid fa-bars';
-            }
-        });
-
-        // Close menu on link click
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                if (mobileToggle.querySelector('i')) {
-                    mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
-                }
-            });
-        });
-    }
-
-    // 3. Navbar Scroll Active Link Highlight & Sticky Glass Effect
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbar = document.getElementById('navbar');
-
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-
-        // Sticky Navbar subtle shadow
-        if (scrollY > 50) {
-            navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
-
-        // Active Section Highlight
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 100;
-            const sectionId = current.getAttribute('id');
-
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    });
-
-    // 4. Typing Effect in Hero Section
+    // 2. Typing Effect in Hero Section
     initTypingEffect();
 
-    // 5. Project Category Filter Logic
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    // 3. Mobile Navigation Drawer Toggle
+    initMobileNav();
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Active button state
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+    // 4. Scroll Spy & Active Nav Highlighting
+    initScrollSpy();
 
-            const filterValue = button.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                if (filterValue === 'all' || cardCategory.includes(filterValue)) {
-                    card.style.display = 'flex';
-                    card.style.animation = 'fadeIn 0.5s ease forward';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // 6. Modal Popup Trigger System
-    const modalOverlay = document.getElementById('modalOverlay');
-    const modalBody = document.getElementById('modalBody');
-    const modalClose = document.getElementById('modalClose');
-
-    document.querySelectorAll('.open-modal').forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            const modalId = trigger.getAttribute('data-modal');
-            const template = document.getElementById(modalId);
-
-            if (template && modalOverlay && modalBody) {
-                modalBody.innerHTML = template.innerHTML;
-                modalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            }
-        });
-    });
-
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
-
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                closeModal();
-            }
-        });
-    }
-
-    function closeModal() {
-        if (modalOverlay) {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    }
-
-    // Keydown ESC to close modal
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeModal();
-        }
-    });
-
-    // 7. Stat Counter Animation on Scroll
-    initStatCounters();
+    // 5. Project Category Filter System
+    initProjectFilters();
 });
 
-// Circuit Particle Canvas Effect
+/* --------------------------------------------------------------------------
+   1. CIRCUIT CANVAS PARTICLE ANIMATION
+   -------------------------------------------------------------------------- */
 function initCircuitCanvas() {
     const canvas = document.getElementById('circuitCanvas');
     if (!canvas) return;
@@ -154,16 +36,16 @@ function initCircuitCanvas() {
     });
 
     const particles = [];
-    const particleCount = Math.min(Math.floor(width / 25), 60);
+    const particleCount = Math.min(Math.floor(width / 25), 65);
 
     for (let i = 0; i < particleCount; i++) {
         particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.8,
-            vy: (Math.random() - 0.5) * 0.8,
+            vx: (Math.random() - 0.5) * 0.7,
+            vy: (Math.random() - 0.5) * 0.7,
             radius: Math.random() * 2 + 1,
-            color: '#00f2fe'
+            color: '#06b6d4'
         });
     }
 
@@ -177,24 +59,24 @@ function initCircuitCanvas() {
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 140) {
+                if (dist < 130) {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(0, 242, 254, ${0.15 * (1 - dist / 140)})`;
+                    ctx.strokeStyle = `rgba(6, 182, 212, ${0.18 * (1 - dist / 130)})`;
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
             }
         }
 
-        // Draw particles
+        // Draw node points
         particles.forEach(p => {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
             ctx.fillStyle = p.color;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = '#00f2fe';
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = '#06b6d4';
             ctx.fill();
             ctx.shadowBlur = 0;
 
@@ -213,22 +95,24 @@ function initCircuitCanvas() {
     draw();
 }
 
-// Typing Effect for Hero Subtitle
+/* --------------------------------------------------------------------------
+   2. HERO TYPING ANIMATION
+   -------------------------------------------------------------------------- */
 function initTypingEffect() {
     const element = document.getElementById('typingElement');
     if (!element) return;
 
     const titles = [
         "Electronics & Communication Engineer",
-        "Embedded Systems Specialist",
-        "FPGA & Verilog HDL Developer",
-        "IoT Systems Integration Enthusiast"
+        "Embedded Systems & FPGA Specialist",
+        "Verilog HDL & RISC-V RTL Developer",
+        "Custom PCB & IoT System Designer"
     ];
 
     let titleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typeSpeed = 100;
+    let typeSpeed = 80;
 
     function type() {
         const currentTitle = titles[titleIndex];
@@ -240,16 +124,16 @@ function initTypingEffect() {
         } else {
             element.textContent = currentTitle.substring(0, charIndex + 1);
             charIndex++;
-            typeSpeed = 90;
+            typeSpeed = 85;
         }
 
         if (!isDeleting && charIndex === currentTitle.length) {
-            typeSpeed = 2000; // Pause at end
+            typeSpeed = 2200; // Pause at full title
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             titleIndex = (titleIndex + 1) % titles.length;
-            typeSpeed = 500; // Pause before typing next
+            typeSpeed = 400; // Pause before next title
         }
 
         setTimeout(type, typeSpeed);
@@ -258,52 +142,138 @@ function initTypingEffect() {
     type();
 }
 
-// Stat Counters Animation
-function initStatCounters() {
-    const statCards = document.querySelectorAll('.stat-value');
-    let animated = false;
+/* --------------------------------------------------------------------------
+   3. MOBILE NAVIGATION TOGGLE
+   -------------------------------------------------------------------------- */
+function initMobileNav() {
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
 
-    window.addEventListener('scroll', () => {
-        if (animated) return;
-        const aboutSection = document.getElementById('about');
-        if (!aboutSection) return;
+    if (!mobileToggle || !navMenu) return;
 
-        const sectionPos = aboutSection.getBoundingClientRect().top;
-        const screenPos = window.innerHeight / 1.3;
-
-        if (sectionPos < screenPos) {
-            statCards.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const suffix = counter.textContent.includes('+') ? '+' : '';
-                let count = 0;
-                const speed = target / 30;
-
-                const updateCount = () => {
-                    count += speed;
-                    if (count < target) {
-                        counter.textContent = Math.ceil(count) + suffix;
-                        setTimeout(updateCount, 40);
-                    } else {
-                        counter.textContent = target + suffix;
-                    }
-                };
-
-                updateCount();
-            });
-            animated = true;
+    mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = mobileToggle.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.className = 'fa-solid fa-xmark';
+        } else {
+            icon.className = 'fa-solid fa-bars';
         }
+    });
+
+    // Close menu when clicking nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            if (mobileToggle.querySelector('i')) {
+                mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
+            }
+        });
     });
 }
 
-// Contact Form Handler
+/* --------------------------------------------------------------------------
+   4. SCROLL SPY & ACTIVE NAV HIGHLIGHTING
+   -------------------------------------------------------------------------- */
+function initScrollSpy() {
+    const sections = document.querySelectorAll('section[id], main[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Add navbar shadow on scroll
+        if (navbar) {
+            if (scrollY > 50) {
+                navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.6)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        }
+
+        // Section Highlighting
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 120;
+            const sectionId = current.getAttribute('id');
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+}
+
+/* --------------------------------------------------------------------------
+   5. PROJECT CATEGORY FILTER SYSTEM
+   -------------------------------------------------------------------------- */
+function initProjectFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filterValue = button.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || (category && category.includes(filterValue))) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+/* --------------------------------------------------------------------------
+   6. CLICK TO COPY UTILITY & TOAST NOTIFICATION
+   -------------------------------------------------------------------------- */
+function copyToClipboard(text, customMessage) {
+    navigator.clipboard.writeText(text).then(() => {
+        showToast(customMessage || 'Copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    
+    if (!toast || !toastMsg) return;
+
+    toastMsg.textContent = message;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+/* --------------------------------------------------------------------------
+   7. CONTACT FORM SUBMISSION HANDLER
+   -------------------------------------------------------------------------- */
 function handleFormSubmit(e) {
     e.preventDefault();
-    const successMsg = document.getElementById('formSuccess');
-    if (successMsg) {
-        successMsg.style.display = 'block';
+    const successAlert = document.getElementById('formSuccess');
+    
+    if (successAlert) {
+        successAlert.style.display = 'flex';
         document.getElementById('contactForm').reset();
+        
         setTimeout(() => {
-            successMsg.style.display = 'none';
+            successAlert.style.display = 'none';
         }, 5000);
     }
 }
